@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Ten vehicles across six classes; filter, search and sort.">
+  <title>The fleet | Hudson Auto Rental</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="site-head">
+    <div class="wrap head-bar">
+      <a class="wordmark" href="index.html">Hudson<em>&middot;</em>Auto Rental</a>
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="mainnav">Menu</button>
+      <nav class="mainnav" id="mainnav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="fleet.html" class="current">Fleet</a>
+        <a href="locations.html">Locations</a>
+        <a href="contact.html">Contact</a>
+        <a href="login.html">Sign in</a>
+        <a href="register.html">Register</a>
+        <a class="quote-link" href="booking.html">Booking <span class="quote-flag is-empty" id="quote-flag">0</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="banner">
+      <div class="wrap">
+        <p class="crumbs"><a href="index.html">Home</a> / Fleet</p>
+        <h1>The fleet</h1>
+        <p id="fleet-summary">Loading your search&hellip;</p>
+      </div>
+    </section>
+
+    <div class="wrap" style="padding-top:1.5rem">
+      <form class="searchbar" id="search-form" style="margin-top:0" novalidate>
+        <h3>Find a vehicle</h3>
+        <p class="alert" id="s-msg" hidden></p>
+        <div class="search-grid">
+          <div>
+            <label class="fld" for="s-loc">Pick-up location</label>
+            <select id="s-loc"></select>
+          </div>
+          <div>
+            <label class="fld" for="s-pick">Pick-up date</label>
+            <input type="date" id="s-pick">
+          </div>
+          <div>
+            <label class="fld" for="s-drop">Return date</label>
+            <input type="date" id="s-drop">
+          </div>
+          <div>
+            <label class="fld" for="s-age">Driver age</label>
+            <input type="number" id="s-age" min="18" max="99" value="30">
+          </div>
+          <button class="btn" type="submit">Search</button>
+        </div>
+      </form>
+    </div>
+
+    <section class="wrap section">
+      <div class="toolbar">
+        <div>
+          <span class="fld">Vehicle class</span>
+          <div class="filter-chips" role="group" aria-label="Filter by vehicle class">
+            <button type="button" class="chip" data-cls="All" aria-pressed="true">All</button>
+            <button type="button" class="chip" data-cls="Economy" aria-pressed="false">Economy</button>
+            <button type="button" class="chip" data-cls="Midsize" aria-pressed="false">Midsize</button>
+            <button type="button" class="chip" data-cls="SUV" aria-pressed="false">SUV</button>
+            <button type="button" class="chip" data-cls="Van" aria-pressed="false">Van</button>
+            <button type="button" class="chip" data-cls="Luxury" aria-pressed="false">Luxury</button>
+            <button type="button" class="chip" data-cls="Electric" aria-pressed="false">Electric</button>
+          </div>
+        </div>
+        <div style="display:flex;gap:.8rem;flex-wrap:wrap">
+          <div>
+            <label class="fld" for="fleet-search">Search</label>
+            <input type="search" id="fleet-search" placeholder="RAV4, luxury&hellip;" style="min-width:160px">
+          </div>
+          <div>
+            <label class="fld" for="fleet-sort">Sort by</label>
+            <select id="fleet-sort">
+              <option value="featured">Featured</option>
+              <option value="price-asc">Daily rate, low to high</option>
+              <option value="price-desc">Daily rate, high to low</option>
+              <option value="seats">Most seats</option>
+              <option value="name">Name, A&ndash;Z</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <p class="result-count" id="fleet-count" aria-live="polite"></p>
+      <div class="fleet-list" id="fleet-list"></div>
+    </section>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <div class="foot-mark">Hudson<em>&middot;</em>Auto Rental</div>
+          <p>Cars, vans and SUVs across five New York locations. Open every day,
+          airport counters open late.</p>
+        </div>
+        <div>
+          <h4>Rent</h4>
+          <ul>
+            <li><a href="fleet.html">The fleet</a></li>
+            <li><a href="locations.html">Locations</a></li>
+            <li><a href="booking.html">Your booking</a></li>
+            <li><a href="terms.html">Rates &amp; fees</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Account</h4>
+          <ul>
+            <li><a href="register.html">Create an account</a></li>
+            <li><a href="login.html">Sign in</a></li>
+            <li><a href="contact.html">Contact us</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="terms.html">Rental terms</a></li>
+            <li><a href="terms.html">Insurance</a></li>
+            <li><a href="terms.html">Privacy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot-base">
+        <span>&copy; 2026 Hudson Auto Rental &mdash; a student project for MAC172, LaGuardia Community College.</span>
+        <span>Long Island City, New York</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

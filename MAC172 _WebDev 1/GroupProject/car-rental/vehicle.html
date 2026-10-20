@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Vehicle specifications and a live rental quote.">
+  <title>Vehicle | Hudson Auto Rental</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="site-head">
+    <div class="wrap head-bar">
+      <a class="wordmark" href="index.html">Hudson<em>&middot;</em>Auto Rental</a>
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="mainnav">Menu</button>
+      <nav class="mainnav" id="mainnav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="fleet.html">Fleet</a>
+        <a href="locations.html">Locations</a>
+        <a href="contact.html">Contact</a>
+        <a href="login.html">Sign in</a>
+        <a href="register.html">Register</a>
+        <a class="quote-link" href="booking.html">Booking <span class="quote-flag is-empty" id="quote-flag">0</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="banner">
+      <div class="wrap">
+        <p class="crumbs"><a href="index.html">Home</a> / <a href="fleet.html">Fleet</a> /
+          <span id="v-crumb">Vehicle</span></p>
+      </div>
+    </section>
+
+    <section class="wrap section" id="vehicle-detail">
+      <div class="book-layout">
+        <div>
+          <div id="v-art"></div>
+
+          <p class="eyebrow" id="v-cls" style="margin-top:1.4rem">Class</p>
+          <h1 id="v-name">Vehicle</h1>
+          <p>Late-model, under 30,000 miles, and valeted between every rental.
+          Pick it up with a full tank and bring it back the same way.</p>
+
+          <div class="spec-grid">
+            <div class="spec-cell"><span class="k">Daily rate</span><span class="v" id="v-rate">&mdash;</span></div>
+            <div class="spec-cell"><span class="k">Seats</span><span class="v" id="v-seats">&mdash;</span></div>
+            <div class="spec-cell"><span class="k">Luggage</span><span class="v" id="v-bags">&mdash;</span></div>
+            <div class="spec-cell"><span class="k">Doors</span><span class="v" id="v-doors">&mdash;</span></div>
+            <div class="spec-cell"><span class="k">Transmission</span><span class="v" id="v-trans">&mdash;</span></div>
+            <div class="spec-cell"><span class="k">Economy</span><span class="v" id="v-mpg">&mdash;</span></div>
+          </div>
+
+          <hr class="rule">
+          <h3>Your rental</h3>
+          <p class="alert" id="v-warn" hidden></p>
+
+          <div class="form-row">
+            <div class="field">
+              <label for="v-loc">Pick-up location</label>
+              <select id="v-loc"></select>
+            </div>
+            <div class="field">
+              <label for="v-age">Driver age</label>
+              <input type="number" id="v-age" min="18" max="99">
+              <span class="hint">Drivers 21&ndash;24 pay a $25 per day surcharge.</span>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label for="v-pick">Pick-up date</label>
+              <input type="date" id="v-pick">
+            </div>
+            <div class="field">
+              <label for="v-drop">Return date</label>
+              <input type="date" id="v-drop">
+            </div>
+          </div>
+
+          <h3 style="margin-top:1.4rem">Add to your rental</h3>
+          <div class="extras" id="v-extras"></div>
+        </div>
+
+        <aside class="quote">
+          <h3>Your quote</h3>
+          <div class="q-row"><span class="label">Length of rental</span><span id="q-days">&mdash;</span></div>
+          <div class="q-row"><span class="label">Vehicle</span><span id="q-base">$0.00</span></div>
+          <div class="q-row"><span class="label">Options</span><span id="q-extras">$0.00</span></div>
+          <div class="q-row" id="q-young-row" hidden><span class="label">Young driver surcharge</span><span id="q-young">$0.00</span></div>
+          <div class="q-row"><span class="label">Taxes &amp; airport fees</span><span id="q-taxes">$0.00</span></div>
+          <div class="q-row q-total"><span class="label" style="font-family:var(--font-body)">Total</span><span id="q-total">$0.00</span></div>
+          <p class="q-note" id="q-perday"></p>
+          <button class="btn btn-block" id="v-reserve" type="button" style="margin-top:.9rem">Reserve this vehicle</button>
+          <a class="btn btn-outline btn-block" href="fleet.html" style="margin-top:.5rem">Back to the fleet</a>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <div class="foot-mark">Hudson<em>&middot;</em>Auto Rental</div>
+          <p>Cars, vans and SUVs across five New York locations. Open every day,
+          airport counters open late.</p>
+        </div>
+        <div>
+          <h4>Rent</h4>
+          <ul>
+            <li><a href="fleet.html">The fleet</a></li>
+            <li><a href="locations.html">Locations</a></li>
+            <li><a href="booking.html">Your booking</a></li>
+            <li><a href="terms.html">Rates &amp; fees</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Account</h4>
+          <ul>
+            <li><a href="register.html">Create an account</a></li>
+            <li><a href="login.html">Sign in</a></li>
+            <li><a href="contact.html">Contact us</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="terms.html">Rental terms</a></li>
+            <li><a href="terms.html">Insurance</a></li>
+            <li><a href="terms.html">Privacy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot-base">
+        <span>&copy; 2026 Hudson Auto Rental &mdash; a student project for MAC172, LaGuardia Community College.</span>
+        <span>Long Island City, New York</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

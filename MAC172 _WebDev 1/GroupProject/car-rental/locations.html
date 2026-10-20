@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Five Hudson counters across New York City.">
+  <title>Locations | Hudson Auto Rental</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="site-head">
+    <div class="wrap head-bar">
+      <a class="wordmark" href="index.html">Hudson<em>&middot;</em>Auto Rental</a>
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="mainnav">Menu</button>
+      <nav class="mainnav" id="mainnav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="fleet.html">Fleet</a>
+        <a href="locations.html" class="current">Locations</a>
+        <a href="contact.html">Contact</a>
+        <a href="login.html">Sign in</a>
+        <a href="register.html">Register</a>
+        <a class="quote-link" href="booking.html">Booking <span class="quote-flag is-empty" id="quote-flag">0</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="banner">
+      <div class="wrap">
+        <p class="crumbs"><a href="index.html">Home</a> / Locations</p>
+        <h1>Where to collect</h1>
+        <p>Five counters across New York City. Airport desks open late.</p>
+      </div>
+    </section>
+
+    <section class="wrap section">
+      <div class="loc-grid">
+        <div class="loc-card">
+          <div class="loc-head"><span class="code">LGA</span><h4>LaGuardia Airport</h4></div>
+          <div class="loc-body">
+            Terminal B, Arrivals level<br>Queens, NY 11371
+            <dl><dt>Mon&ndash;Sun</dt><dd>05:00 &ndash; 01:00</dd>
+                <dt>Shuttle</dt><dd>Every 10 min</dd></dl>
+          </div>
+        </div>
+        <div class="loc-card">
+          <div class="loc-head"><span class="code">JFK</span><h4>JFK Airport</h4></div>
+          <div class="loc-body">
+            Federal Circle, Building 305<br>Jamaica, NY 11430
+            <dl><dt>Mon&ndash;Sun</dt><dd>24 hours</dd>
+                <dt>AirTrain</dt><dd>Federal Circle stop</dd></dl>
+          </div>
+        </div>
+        <div class="loc-card">
+          <div class="loc-head"><span class="code">LIC</span><h4>Long Island City</h4></div>
+          <div class="loc-body">
+            31-10 Thomson Avenue<br>Long Island City, NY 11101
+            <dl><dt>Mon&ndash;Fri</dt><dd>07:00 &ndash; 20:00</dd>
+                <dt>Sat&ndash;Sun</dt><dd>08:00 &ndash; 18:00</dd></dl>
+          </div>
+        </div>
+        <div class="loc-card">
+          <div class="loc-head"><span class="code">MID</span><h4>Midtown Manhattan</h4></div>
+          <div class="loc-body">
+            440 West 41st Street<br>New York, NY 10036
+            <dl><dt>Mon&ndash;Fri</dt><dd>06:30 &ndash; 21:00</dd>
+                <dt>Sat&ndash;Sun</dt><dd>08:00 &ndash; 19:00</dd></dl>
+          </div>
+        </div>
+        <div class="loc-card">
+          <div class="loc-head"><span class="code">BKN</span><h4>Downtown Brooklyn</h4></div>
+          <div class="loc-body">
+            185 Livingston Street<br>Brooklyn, NY 11201
+            <dl><dt>Mon&ndash;Fri</dt><dd>07:00 &ndash; 19:00</dd>
+                <dt>Sat&ndash;Sun</dt><dd>09:00 &ndash; 17:00</dd></dl>
+          </div>
+        </div>
+      </div>
+
+      <hr class="rule">
+      <h2>One-way rentals</h2>
+      <p>Collect at one counter and return at another. The drop fee depends on the pair.</p>
+      <div class="table-wrap">
+        <table class="data">
+          <thead><tr><th>Collect</th><th>Return</th><th>Drop fee</th><th>Notice needed</th></tr></thead>
+          <tbody>
+            <tr><td>Any NYC counter</td><td>Any NYC counter</td><td class="num">$0.00</td><td>None</td></tr>
+            <tr><td>NYC</td><td>Upstate New York</td><td class="num">$75.00</td><td>24 hours</td></tr>
+            <tr><td>NYC</td><td>New Jersey / Connecticut</td><td class="num">$95.00</td><td>48 hours</td></tr>
+            <tr><td>NYC</td><td>Outside the tri-state area</td><td class="num">$250.00</td><td>7 days</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <div class="foot-mark">Hudson<em>&middot;</em>Auto Rental</div>
+          <p>Cars, vans and SUVs across five New York locations. Open every day,
+          airport counters open late.</p>
+        </div>
+        <div>
+          <h4>Rent</h4>
+          <ul>
+            <li><a href="fleet.html">The fleet</a></li>
+            <li><a href="locations.html">Locations</a></li>
+            <li><a href="booking.html">Your booking</a></li>
+            <li><a href="terms.html">Rates &amp; fees</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Account</h4>
+          <ul>
+            <li><a href="register.html">Create an account</a></li>
+            <li><a href="login.html">Sign in</a></li>
+            <li><a href="contact.html">Contact us</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="terms.html">Rental terms</a></li>
+            <li><a href="terms.html">Insurance</a></li>
+            <li><a href="terms.html">Privacy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot-base">
+        <span>&copy; 2026 Hudson Auto Rental &mdash; a student project for MAC172, LaGuardia Community College.</span>
+        <span>Long Island City, New York</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

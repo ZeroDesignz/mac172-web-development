@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Review and confirm your reservation.">
+  <title>Your booking | Hudson Auto Rental</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="site-head">
+    <div class="wrap head-bar">
+      <a class="wordmark" href="index.html">Hudson<em>&middot;</em>Auto Rental</a>
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="mainnav">Menu</button>
+      <nav class="mainnav" id="mainnav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="fleet.html">Fleet</a>
+        <a href="locations.html">Locations</a>
+        <a href="contact.html">Contact</a>
+        <a href="login.html">Sign in</a>
+        <a href="register.html">Register</a>
+        <a class="quote-link current" href="booking.html">Booking <span class="quote-flag is-empty" id="quote-flag">0</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="banner">
+      <div class="wrap">
+        <p class="crumbs"><a href="index.html">Home</a> / <a href="fleet.html">Fleet</a> / Booking</p>
+        <h1>Confirm your booking</h1>
+        <p>Check the details, add the driver, and the reservation is made.</p>
+      </div>
+    </section>
+
+    <section class="wrap section" id="booking-page">
+      <div class="book-layout">
+        <div>
+          <div id="b-summary"></div>
+
+          <hr class="rule">
+          <h3>Driver details</h3>
+          <form class="form-panel form-wide" id="booking-form" novalidate style="padding:0;border:0;background:none">
+            <p class="alert" id="b-result" hidden></p>
+            <div class="form-row">
+              <div class="field">
+                <label for="b-name">Full name, as printed on the licence</label>
+                <input type="text" id="b-name" autocomplete="name">
+                <span class="error-text" id="b-name-error"></span>
+              </div>
+              <div class="field">
+                <label for="b-lic">Driver licence number</label>
+                <input type="text" id="b-lic" placeholder="NY-123456789">
+                <span class="error-text" id="b-lic-error"></span>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="field">
+                <label for="b-email">Email</label>
+                <input type="email" id="b-email" autocomplete="email">
+                <span class="error-text" id="b-email-error"></span>
+              </div>
+              <div class="field">
+                <label for="b-phone">Phone</label>
+                <input type="tel" id="b-phone" placeholder="(718) 555-0147">
+                <span class="error-text" id="b-phone-error"></span>
+              </div>
+            </div>
+            <button class="btn" type="submit">Confirm reservation</button>
+            <p class="form-note">Nothing is charged now. You pay at the counter.</p>
+          </form>
+        </div>
+
+        <aside class="quote" id="b-quote">
+          <h3>Price breakdown</h3>
+          <div class="q-row"><span class="label">Length of rental</span><span id="bq-days">&mdash;</span></div>
+          <div class="q-row"><span class="label">Vehicle</span><span id="bq-base">$0.00</span></div>
+          <div class="q-row"><span class="label">Options</span><span id="bq-extras">$0.00</span></div>
+          <div class="q-row" id="bq-young-row" hidden><span class="label">Young driver surcharge</span><span id="bq-young">$0.00</span></div>
+          <div class="q-row"><span class="label">Taxes &amp; airport fees</span><span id="bq-taxes">$0.00</span></div>
+          <div class="q-row q-total"><span class="label" style="font-family:var(--font-body)">Total</span><span id="bq-total">$0.00</span></div>
+          <p class="q-note">Free cancellation up to 24 hours before pick-up.</p>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <div class="foot-mark">Hudson<em>&middot;</em>Auto Rental</div>
+          <p>Cars, vans and SUVs across five New York locations. Open every day,
+          airport counters open late.</p>
+        </div>
+        <div>
+          <h4>Rent</h4>
+          <ul>
+            <li><a href="fleet.html">The fleet</a></li>
+            <li><a href="locations.html">Locations</a></li>
+            <li><a href="booking.html">Your booking</a></li>
+            <li><a href="terms.html">Rates &amp; fees</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Account</h4>
+          <ul>
+            <li><a href="register.html">Create an account</a></li>
+            <li><a href="login.html">Sign in</a></li>
+            <li><a href="contact.html">Contact us</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="terms.html">Rental terms</a></li>
+            <li><a href="terms.html">Insurance</a></li>
+            <li><a href="terms.html">Privacy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot-base">
+        <span>&copy; 2026 Hudson Auto Rental &mdash; a student project for MAC172, LaGuardia Community College.</span>
+        <span>Long Island City, New York</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

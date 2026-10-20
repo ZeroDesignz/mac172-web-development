@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Create a Hudson Auto Rental account.">
+  <title>Create an account | Hudson Auto Rental</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="site-head">
+    <div class="wrap head-bar">
+      <a class="wordmark" href="index.html">Hudson<em>&middot;</em>Auto Rental</a>
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="mainnav">Menu</button>
+      <nav class="mainnav" id="mainnav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="fleet.html">Fleet</a>
+        <a href="locations.html">Locations</a>
+        <a href="contact.html">Contact</a>
+        <a href="login.html">Sign in</a>
+        <a href="register.html" class="current">Register</a>
+        <a class="quote-link" href="booking.html">Booking <span class="quote-flag is-empty" id="quote-flag">0</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="banner">
+      <div class="wrap">
+        <p class="crumbs"><a href="index.html">Home</a> / Register</p>
+        <h1>Create an account</h1>
+        <p>Save your licence details once and skip the counter paperwork.</p>
+      </div>
+    </section>
+
+    <section class="wrap section">
+      <form class="form-panel" id="register-form" novalidate>
+        <p class="alert" id="reg-result" hidden></p>
+
+        <div class="form-row">
+          <div class="field">
+            <label for="reg-first">First name</label>
+            <input type="text" id="reg-first" autocomplete="given-name">
+            <span class="error-text" id="reg-first-error"></span>
+          </div>
+          <div class="field">
+            <label for="reg-last">Last name</label>
+            <input type="text" id="reg-last" autocomplete="family-name">
+            <span class="error-text" id="reg-last-error"></span>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="reg-email">Email address</label>
+          <input type="email" id="reg-email" autocomplete="email" placeholder="you@example.com">
+          <span class="error-text" id="reg-email-error"></span>
+        </div>
+
+        <div class="field">
+          <label for="reg-dob">Date of birth
+            <span class="hint">We rent to drivers aged 21 and over.</span>
+          </label>
+          <input type="date" id="reg-dob">
+          <span class="error-text" id="reg-dob-error"></span>
+        </div>
+
+        <div class="field">
+          <label for="reg-pass">Password</label>
+          <input type="password" id="reg-pass" autocomplete="new-password">
+          <div class="meter" id="pass-meter" aria-hidden="true"><span></span></div>
+          <span class="meter-label" id="pass-label">At least 8 characters, with a capital letter and a number.</span>
+          <span class="error-text" id="reg-pass-error"></span>
+        </div>
+
+        <div class="field">
+          <label for="reg-conf">Confirm password</label>
+          <input type="password" id="reg-conf" autocomplete="new-password">
+          <span class="error-text" id="reg-conf-error"></span>
+        </div>
+
+        <div class="field">
+          <label class="check">
+            <input type="checkbox" id="reg-terms">
+            <span>I have read and accept the <a href="terms.html">rental terms</a>.</span>
+          </label>
+          <span class="error-text" id="reg-terms-error"></span>
+        </div>
+
+        <button class="btn btn-block" type="submit">Create account</button>
+        <p class="form-note">Already have one? <a href="login.html">Sign in instead</a>.</p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <div class="foot-mark">Hudson<em>&middot;</em>Auto Rental</div>
+          <p>Cars, vans and SUVs across five New York locations. Open every day,
+          airport counters open late.</p>
+        </div>
+        <div>
+          <h4>Rent</h4>
+          <ul>
+            <li><a href="fleet.html">The fleet</a></li>
+            <li><a href="locations.html">Locations</a></li>
+            <li><a href="booking.html">Your booking</a></li>
+            <li><a href="terms.html">Rates &amp; fees</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Account</h4>
+          <ul>
+            <li><a href="register.html">Create an account</a></li>
+            <li><a href="login.html">Sign in</a></li>
+            <li><a href="contact.html">Contact us</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="terms.html">Rental terms</a></li>
+            <li><a href="terms.html">Insurance</a></li>
+            <li><a href="terms.html">Privacy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot-base">
+        <span>&copy; 2026 Hudson Auto Rental &mdash; a student project for MAC172, LaGuardia Community College.</span>
+        <span>Long Island City, New York</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
