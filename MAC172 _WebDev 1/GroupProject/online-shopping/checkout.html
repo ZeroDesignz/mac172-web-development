@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Enter shipping and payment details.">
+  <title>Checkout | Thread &amp; Co.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Karla:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="site-head">
+    <div class="wrap head-bar">
+      <a class="wordmark" href="index.html">Thread &amp; Co.</a>
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="mainnav">Menu</button>
+      <nav class="mainnav" id="mainnav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="contact.html">Contact</a>
+        <a href="login.html">Sign in</a>
+        <a href="register.html">Register</a>
+        <a class="cart-link" href="cart.html">Cart <span class="cart-count is-empty" id="cart-count">0</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="banner">
+      <div class="wrap">
+        <p class="crumbs"><a href="index.html">Home</a> / <a href="cart.html">Cart</a> / Checkout</p>
+        <h1>Checkout</h1>
+        <p>Every field is checked before the order goes through.</p>
+      </div>
+    </section>
+
+    <section class="wrap section">
+      <div class="cart-layout">
+        <form class="form-panel form-wide" id="checkout-form" novalidate>
+          <p class="alert" id="co-result" hidden></p>
+
+          <h3>Shipping address</h3>
+          <div class="field">
+            <label for="co-name">Full name</label>
+            <input type="text" id="co-name" autocomplete="name">
+            <span class="error-text" id="co-name-error"></span>
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label for="co-email">Email</label>
+              <input type="email" id="co-email" autocomplete="email">
+              <span class="error-text" id="co-email-error"></span>
+            </div>
+            <div class="field">
+              <label for="co-phone">Phone</label>
+              <input type="tel" id="co-phone" autocomplete="tel" placeholder="(718) 555-0147">
+              <span class="error-text" id="co-phone-error"></span>
+            </div>
+          </div>
+          <div class="field">
+            <label for="co-addr">Street address</label>
+            <input type="text" id="co-addr" autocomplete="street-address">
+            <span class="error-text" id="co-addr-error"></span>
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label for="co-city">City</label>
+              <input type="text" id="co-city" autocomplete="address-level2">
+              <span class="error-text" id="co-city-error"></span>
+            </div>
+            <div class="field">
+              <label for="co-zip">ZIP code</label>
+              <input type="text" id="co-zip" autocomplete="postal-code" placeholder="11101">
+              <span class="error-text" id="co-zip-error"></span>
+            </div>
+          </div>
+
+          <hr class="rule">
+          <h3>Payment</h3>
+          <div class="field">
+            <label for="co-card">Card number
+              <span class="hint">16 digits. This demo does not send card data anywhere.</span>
+            </label>
+            <input type="text" id="co-card" inputmode="numeric" placeholder="4111 1111 1111 1111">
+            <span class="error-text" id="co-card-error"></span>
+          </div>
+
+          <button class="btn btn-block" type="submit">Place order</button>
+        </form>
+
+        <aside class="summary">
+          <h3>Your order</h3>
+          <div id="co-lines"></div>
+          <hr class="rule" style="margin-block:.8rem">
+          <div class="sum-row"><span class="label">Subtotal</span><span id="co-sub">$0.00</span></div>
+          <div class="sum-row"><span class="label">Sales tax</span><span id="co-tax">$0.00</span></div>
+          <div class="sum-row"><span class="label">Shipping</span><span id="co-ship">Free</span></div>
+          <div class="sum-row sum-total"><span class="label" style="font-family:var(--font-body)">Total</span><span id="co-total">$0.00</span></div>
+          <p class="ship-note"><a href="cart.html">Edit your cart</a></p>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <div class="foot-mark">Thread &amp; Co.</div>
+          <p>Everyday apparel, bags and home goods, made in small runs and built to last.</p>
+        </div>
+        <div>
+          <h4>Shop</h4>
+          <ul>
+            <li><a href="shop.html">All products</a></li>
+            <li><a href="shop.html">Apparel</a></li>
+            <li><a href="shop.html">Bags</a></li>
+            <li><a href="shop.html">Home</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Account</h4>
+          <ul>
+            <li><a href="register.html">Create an account</a></li>
+            <li><a href="login.html">Sign in</a></li>
+            <li><a href="cart.html">Your cart</a></li>
+            <li><a href="checkout.html">Checkout</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Help</h4>
+          <ul>
+            <li><a href="contact.html">Contact us</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+            <li><a href="terms.html">Shipping &amp; returns</a></li>
+            <li><a href="terms.html">Privacy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot-base">
+        <span>&copy; 2026 Thread &amp; Co. &mdash; a student project for MAC172, LaGuardia Community College.</span>
+        <span>Long Island City, New York</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

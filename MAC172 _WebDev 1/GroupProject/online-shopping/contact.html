@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Questions about an order, a repair, or a product.">
+  <title>Contact us | Thread &amp; Co.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Karla:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="site-head">
+    <div class="wrap head-bar">
+      <a class="wordmark" href="index.html">Thread &amp; Co.</a>
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="mainnav">Menu</button>
+      <nav class="mainnav" id="mainnav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="contact.html" class="current">Contact</a>
+        <a href="login.html">Sign in</a>
+        <a href="register.html">Register</a>
+        <a class="cart-link" href="cart.html">Cart <span class="cart-count is-empty" id="cart-count">0</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="banner">
+      <div class="wrap">
+        <p class="crumbs"><a href="index.html">Home</a> / Contact</p>
+        <h1>Contact us</h1>
+        <p>Questions about an order, a repair, or a product.</p>
+      </div>
+    </section>
+
+    <section class="wrap section">
+      <div class="cart-layout">
+        <form class="form-panel form-wide" id="contact-form" novalidate>
+          <p class="alert" id="ct-result" hidden></p>
+
+          <div class="form-row">
+            <div class="field">
+              <label for="ct-name">Your name</label>
+              <input type="text" id="ct-name" autocomplete="name">
+              <span class="error-text" id="ct-name-error"></span>
+            </div>
+            <div class="field">
+              <label for="ct-email">Email address</label>
+              <input type="email" id="ct-email" autocomplete="email">
+              <span class="error-text" id="ct-email-error"></span>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="ct-topic">Subject</label>
+            <select id="ct-topic">
+              <option value="">Choose one&hellip;</option>
+              <option>Order status</option>
+              <option>Return or exchange</option>
+              <option>Repair request</option>
+              <option>Product question</option>
+              <option>Something else</option>
+            </select>
+            <span class="error-text" id="ct-topic-error"></span>
+          </div>
+
+          <div class="field">
+            <label for="ct-msg">Message</label>
+            <textarea id="ct-msg" maxlength="600"></textarea>
+            <span class="meter-label" id="ct-count">0 / 600 characters</span>
+            <span class="error-text" id="ct-msg-error"></span>
+          </div>
+
+          <button class="btn" type="submit">Send message</button>
+        </form>
+
+        <aside class="summary">
+          <h3>Visit the shop</h3>
+          <p style="font-size:.92rem;color:var(--ink-soft)">
+            31-10 Thomson Avenue<br>
+            Long Island City, NY 11101
+          </p>
+          <hr class="rule" style="margin-block:1rem">
+          <h4 style="font-size:.95rem">Hours</h4>
+          <div class="sum-row"><span class="label">Mon &ndash; Fri</span><span>11:00 &ndash; 19:00</span></div>
+          <div class="sum-row"><span class="label">Saturday</span><span>11:00 &ndash; 18:00</span></div>
+          <div class="sum-row"><span class="label">Sunday</span><span>Closed</span></div>
+          <p class="ship-note">We answer messages within two business days.</p>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <div class="foot-mark">Thread &amp; Co.</div>
+          <p>Everyday apparel, bags and home goods, made in small runs and built to last.</p>
+        </div>
+        <div>
+          <h4>Shop</h4>
+          <ul>
+            <li><a href="shop.html">All products</a></li>
+            <li><a href="shop.html">Apparel</a></li>
+            <li><a href="shop.html">Bags</a></li>
+            <li><a href="shop.html">Home</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Account</h4>
+          <ul>
+            <li><a href="register.html">Create an account</a></li>
+            <li><a href="login.html">Sign in</a></li>
+            <li><a href="cart.html">Your cart</a></li>
+            <li><a href="checkout.html">Checkout</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Help</h4>
+          <ul>
+            <li><a href="contact.html">Contact us</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+            <li><a href="terms.html">Shipping &amp; returns</a></li>
+            <li><a href="terms.html">Privacy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot-base">
+        <span>&copy; 2026 Thread &amp; Co. &mdash; a student project for MAC172, LaGuardia Community College.</span>
+        <span>Long Island City, New York</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
