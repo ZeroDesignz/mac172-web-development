@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Due dates, renewals and fines on your card.">
+  <title>My loans | Bridgeview Public Library</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="site-head">
+    <div class="wrap head-bar">
+      <a class="wordmark" href="index.html">
+        <span class="wm-name">Bridgeview</span>
+        <span class="wm-sub">Public Library</span>
+      </a>
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="mainnav">Menu</button>
+      <nav class="mainnav" id="mainnav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="catalog.html">Catalogue</a>
+        <a href="branches.html">Branches</a>
+        <a href="policies.html">Policies</a>
+        <a href="contact.html">Contact</a>
+        <a href="login.html">Sign in</a>
+        <a href="register.html">Get a card</a>
+        <a class="loan-link current" href="myloans.html">My loans <span class="loan-flag" id="loan-flag">0</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="banner">
+      <div class="wrap">
+        <p class="crumbs"><a href="index.html">Home</a> / My loans</p>
+        <h1>My loans</h1>
+        <p>Everything currently out on your card, with due dates and anything owed.</p>
+      </div>
+    </section>
+
+    <section class="wrap section">
+      <div class="split">
+        <div>
+          <p class="alert" id="ln-result" hidden></p>
+          <div id="loan-list"></div>
+        </div>
+
+        <aside class="panel">
+          <h3>Card summary</h3>
+          <div class="p-row"><span class="label">Items out</span><span id="ln-count">0</span></div>
+          <div class="p-row"><span class="label">Overdue</span><span id="ln-overdue">0</span></div>
+          <div class="p-row"><span class="label">Fines owed</span><span id="ln-fines">$0.00</span></div>
+          <p class="p-note" id="ln-note"></p>
+
+          <hr class="rule" style="margin-block:1rem">
+          <h3>Holds</h3>
+          <div id="ln-holds"></div>
+          <p class="p-note">Holds are filled in the order they were placed.</p>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <div class="foot-mark">Bridgeview Public Library</div>
+          <p>Three branches in Queens. Free cards for every borough resident,
+          and no fines for anyone under 18.</p>
+        </div>
+        <div>
+          <h4>Borrow</h4>
+          <ul>
+            <li><a href="catalog.html">Search the catalogue</a></li>
+            <li><a href="myloans.html">My loans</a></li>
+            <li><a href="register.html">Get a library card</a></li>
+            <li><a href="policies.html">Borrowing policies</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Visit</h4>
+          <ul>
+            <li><a href="branches.html">Branches &amp; hours</a></li>
+            <li><a href="branches.html">Accessibility</a></li>
+            <li><a href="contact.html">Contact a librarian</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>About</h4>
+          <ul>
+            <li><a href="policies.html">Fines &amp; fees</a></li>
+            <li><a href="policies.html">Privacy of records</a></li>
+            <li><a href="policies.html">Code of conduct</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot-base">
+        <span>&copy; 2026 Bridgeview Public Library &mdash; a student project for MAC172, LaGuardia Community College.</span>
+        <span>Long Island City, New York</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
