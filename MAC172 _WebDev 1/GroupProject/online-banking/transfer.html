@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Move money between your own accounts instantly.">
+  <title>Transfer money | Meridian Credit Union</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Source+Sans+3:wght@400;500;600&family=Roboto+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="site-head">
+    <div class="wrap head-bar">
+      <a class="wordmark" href="index.html">
+        <span class="wm-dot" aria-hidden="true">M</span>
+        <span class="wm-name">Meridian</span>
+      </a>
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="mainnav">Menu</button>
+      <nav class="mainnav" id="mainnav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="dashboard.html">Accounts</a>
+        <a href="transfer.html" class="current">Transfer</a>
+        <a href="billpay.html">Bill pay</a>
+        <a href="loans.html">Loans</a>
+        <a href="contact.html">Contact</a>
+        <a href="login.html">Sign in</a>
+        <a class="btn btn-sm" href="register.html">Open an account</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="banner">
+      <div class="wrap">
+        <p class="crumbs"><a href="index.html">Home</a> / Transfer</p>
+        <h1>Transfer money</h1>
+        <p>Between your own accounts, instantly and at no charge.</p>
+      </div>
+    </section>
+
+    <section class="wrap section">
+      <div class="split">
+        <form class="card" id="transfer-form" novalidate>
+          <p class="alert" id="tf-result" hidden></p>
+
+          <div class="form-row">
+            <div class="field">
+              <label for="tf-from">From</label>
+              <select id="tf-from"></select>
+              <span class="hint">Balance <span class="mono" id="tf-from-bal">$0.00</span></span>
+            </div>
+            <div class="field">
+              <label for="tf-to">To</label>
+              <select id="tf-to"></select>
+              <span class="hint">Balance <span class="mono" id="tf-to-bal">$0.00</span></span>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="tf-amt">Amount</label>
+            <input type="number" id="tf-amt" min="0" step="0.01" value="250.00" style="max-width:12rem">
+            <span class="hint">Transfers between your own accounts clear immediately.</span>
+          </div>
+
+          <button class="btn" type="submit">Transfer</button>
+        </form>
+
+        <aside class="card sticky">
+          <h3>Recent transfers</h3>
+          <ul class="txn-list" id="tf-history"></ul>
+          <p class="p-note">Transfers to another institution take one to three business days
+          and go through the ACH network.</p>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <div class="foot-mark">Meridian Credit Union</div>
+          <p>A not-for-profit cooperative owned by its members, serving Queens
+          and Brooklyn since 1954.</p>
+          <p style="margin-top:.8rem"><span class="ncua">Federally insured by NCUA</span></p>
+        </div>
+        <div>
+          <h4>Bank</h4>
+          <ul>
+            <li><a href="dashboard.html">Your accounts</a></li>
+            <li><a href="transfer.html">Transfer money</a></li>
+            <li><a href="billpay.html">Pay a bill</a></li>
+            <li><a href="loans.html">Loan calculator</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Join</h4>
+          <ul>
+            <li><a href="register.html">Open an account</a></li>
+            <li><a href="login.html">Sign in</a></li>
+            <li><a href="contact.html">Contact us</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="terms.html">Membership agreement</a></li>
+            <li><a href="terms.html">Fee schedule</a></li>
+            <li><a href="terms.html">Privacy &amp; security</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot-base">
+        <span>&copy; 2026 Meridian Credit Union &mdash; a student project for MAC172, LaGuardia Community College.</span>
+        <span>Routing 226078XXX</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Sign in with your member number.">
+  <title>Sign in | Meridian Credit Union</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Source+Sans+3:wght@400;500;600&family=Roboto+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="site-head">
+    <div class="wrap head-bar">
+      <a class="wordmark" href="index.html">
+        <span class="wm-dot" aria-hidden="true">M</span>
+        <span class="wm-name">Meridian</span>
+      </a>
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="mainnav">Menu</button>
+      <nav class="mainnav" id="mainnav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="dashboard.html">Accounts</a>
+        <a href="transfer.html">Transfer</a>
+        <a href="billpay.html">Bill pay</a>
+        <a href="loans.html">Loans</a>
+        <a href="contact.html">Contact</a>
+        <a href="login.html" class="current">Sign in</a>
+        <a class="btn btn-sm" href="register.html">Open an account</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="banner">
+      <div class="wrap">
+        <p class="crumbs"><a href="index.html">Home</a> / Sign in</p>
+        <h1>Sign in</h1>
+        <p>Use the member number on your statement.</p>
+      </div>
+    </section>
+
+    <section class="wrap section">
+      <form class="form-panel" id="login-form" novalidate>
+        <p class="alert" id="log-result" hidden></p>
+        <div class="field">
+          <label for="log-member">Member number
+            <span class="hint">Two letters and eight digits, for example MC00000000.</span>
+          </label>
+          <input type="text" id="log-member" placeholder="MC00000000">
+          <span class="error-text" id="log-member-error"></span>
+        </div>
+        <div class="field">
+          <label for="log-pass">Password</label>
+          <input type="password" id="log-pass" autocomplete="current-password">
+          <span class="error-text" id="log-pass-error"></span>
+        </div>
+        <div class="field">
+          <label class="check">
+            <input type="checkbox" id="log-trust">
+            <span>Trust this device for 30 days</span>
+          </label>
+        </div>
+        <button class="btn btn-block" type="submit">Sign in</button>
+        <p class="form-note">Not a member yet? <a href="register.html">Open an account</a>.</p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <div class="foot-mark">Meridian Credit Union</div>
+          <p>A not-for-profit cooperative owned by its members, serving Queens
+          and Brooklyn since 1954.</p>
+          <p style="margin-top:.8rem"><span class="ncua">Federally insured by NCUA</span></p>
+        </div>
+        <div>
+          <h4>Bank</h4>
+          <ul>
+            <li><a href="dashboard.html">Your accounts</a></li>
+            <li><a href="transfer.html">Transfer money</a></li>
+            <li><a href="billpay.html">Pay a bill</a></li>
+            <li><a href="loans.html">Loan calculator</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Join</h4>
+          <ul>
+            <li><a href="register.html">Open an account</a></li>
+            <li><a href="login.html">Sign in</a></li>
+            <li><a href="contact.html">Contact us</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="terms.html">Membership agreement</a></li>
+            <li><a href="terms.html">Fee schedule</a></li>
+            <li><a href="terms.html">Privacy &amp; security</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot-base">
+        <span>&copy; 2026 Meridian Credit Union &mdash; a student project for MAC172, LaGuardia Community College.</span>
+        <span>Routing 226078XXX</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

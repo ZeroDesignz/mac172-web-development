@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Monthly payment, total interest and a first-year schedule.">
+  <title>Loan calculator | Meridian Credit Union</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Source+Sans+3:wght@400;500;600&family=Roboto+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="site-head">
+    <div class="wrap head-bar">
+      <a class="wordmark" href="index.html">
+        <span class="wm-dot" aria-hidden="true">M</span>
+        <span class="wm-name">Meridian</span>
+      </a>
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="mainnav">Menu</button>
+      <nav class="mainnav" id="mainnav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="dashboard.html">Accounts</a>
+        <a href="transfer.html">Transfer</a>
+        <a href="billpay.html">Bill pay</a>
+        <a href="loans.html" class="current">Loans</a>
+        <a href="contact.html">Contact</a>
+        <a href="login.html">Sign in</a>
+        <a class="btn btn-sm" href="register.html">Open an account</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="banner">
+      <div class="wrap">
+        <p class="crumbs"><a href="index.html">Home</a> / Loans</p>
+        <h1>Loan calculator</h1>
+        <p>What a loan actually costs, month by month and over its whole life.</p>
+      </div>
+    </section>
+
+    <section class="wrap section">
+      <div class="split">
+        <div>
+          <form class="card" id="loan-form" novalidate>
+            <p class="alert" id="ln-warn" hidden></p>
+
+            <div class="field">
+              <label for="ln-kind">What are you borrowing for?</label>
+              <select id="ln-kind"></select>
+            </div>
+
+            <div class="form-row">
+              <div class="field">
+                <label for="ln-amount">Amount</label>
+                <input type="number" id="ln-amount" step="500">
+              </div>
+              <div class="field">
+                <label for="ln-years">Term in years</label>
+                <input type="number" id="ln-years" min="1" max="40" step="1">
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="ln-apr">Interest rate (APR)
+                <span class="hint">Pre-filled with our posted rate. Change it to compare.</span>
+              </label>
+              <input type="number" id="ln-apr" min="0" max="30" step="0.01" style="max-width:9rem">
+            </div>
+          </form>
+
+          <div class="card" style="margin-top:1.2rem">
+            <h3 style="margin-top:0">First year of payments</h3>
+            <p style="font-size:.88rem;color:var(--ink-soft)">
+              Early payments are mostly interest. This is where that shows.</p>
+            <div class="table-wrap">
+              <table class="data">
+                <thead>
+                  <tr><th>#</th><th style="text-align:right">Payment</th>
+                      <th style="text-align:right">Interest</th>
+                      <th style="text-align:right">Principal</th>
+                      <th style="text-align:right">Balance</th></tr>
+                </thead>
+                <tbody id="ln-schedule"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <aside class="card sticky">
+          <h3>Your payment</h3>
+          <div class="mono" id="ln-monthly"
+               style="font-size:2.3rem;font-weight:500;color:var(--mint-deep);line-height:1">$0.00</div>
+          <div style="font-size:.82rem;color:var(--ink-faint);margin-top:.2rem">
+            per month for <span id="ln-n">0 payments</span></div>
+
+          <hr class="rule" style="margin-block:1.1rem">
+          <div class="p-row"><span class="label">Amount borrowed</span><span id="ln-principal">$0.00</span></div>
+          <div class="p-row"><span class="label">Interest paid</span><span id="ln-interest">$0.00</span></div>
+          <div class="p-row p-total"><span class="label" style="font-family:var(--font-body)">Total repaid</span><span id="ln-total">$0.00</span></div>
+          <p class="p-note" id="ln-share"></p>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <div class="foot-mark">Meridian Credit Union</div>
+          <p>A not-for-profit cooperative owned by its members, serving Queens
+          and Brooklyn since 1954.</p>
+          <p style="margin-top:.8rem"><span class="ncua">Federally insured by NCUA</span></p>
+        </div>
+        <div>
+          <h4>Bank</h4>
+          <ul>
+            <li><a href="dashboard.html">Your accounts</a></li>
+            <li><a href="transfer.html">Transfer money</a></li>
+            <li><a href="billpay.html">Pay a bill</a></li>
+            <li><a href="loans.html">Loan calculator</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Join</h4>
+          <ul>
+            <li><a href="register.html">Open an account</a></li>
+            <li><a href="login.html">Sign in</a></li>
+            <li><a href="contact.html">Contact us</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="terms.html">Membership agreement</a></li>
+            <li><a href="terms.html">Fee schedule</a></li>
+            <li><a href="terms.html">Privacy &amp; security</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot-base">
+        <span>&copy; 2026 Meridian Credit Union &mdash; a student project for MAC172, LaGuardia Community College.</span>
+        <span>Routing 226078XXX</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Open a Meridian Credit Union account.">
+  <title>Open an account | Meridian Credit Union</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Source+Sans+3:wght@400;500;600&family=Roboto+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="site-head">
+    <div class="wrap head-bar">
+      <a class="wordmark" href="index.html">
+        <span class="wm-dot" aria-hidden="true">M</span>
+        <span class="wm-name">Meridian</span>
+      </a>
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="mainnav">Menu</button>
+      <nav class="mainnav" id="mainnav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="dashboard.html">Accounts</a>
+        <a href="transfer.html">Transfer</a>
+        <a href="billpay.html">Bill pay</a>
+        <a href="loans.html">Loans</a>
+        <a href="contact.html">Contact</a>
+        <a href="login.html">Sign in</a>
+        <a class="btn btn-sm" href="register.html">Open an account</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="banner">
+      <div class="wrap">
+        <p class="crumbs"><a href="index.html">Home</a> / Open an account</p>
+        <h1>Open an account</h1>
+        <p>Membership is open to anyone living, working or studying in Queens or Brooklyn.</p>
+      </div>
+    </section>
+
+    <section class="wrap section">
+      <form class="form-panel" id="register-form" novalidate>
+        <p class="alert" id="reg-result" hidden></p>
+
+        <div class="form-row">
+          <div class="field">
+            <label for="reg-first">First name</label>
+            <input type="text" id="reg-first" autocomplete="given-name">
+            <span class="error-text" id="reg-first-error"></span>
+          </div>
+          <div class="field">
+            <label for="reg-last">Last name</label>
+            <input type="text" id="reg-last" autocomplete="family-name">
+            <span class="error-text" id="reg-last-error"></span>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="field">
+            <label for="reg-email">Email address</label>
+            <input type="email" id="reg-email" autocomplete="email" placeholder="you@example.com">
+            <span class="error-text" id="reg-email-error"></span>
+          </div>
+          <div class="field">
+            <label for="reg-phone">Phone</label>
+            <input type="tel" id="reg-phone" autocomplete="tel" placeholder="(718) 555-0147">
+            <span class="error-text" id="reg-phone-error"></span>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="field">
+            <label for="reg-dob">Date of birth
+              <span class="hint">You must be 18 to open an account on your own.</span>
+            </label>
+            <input type="date" id="reg-dob">
+            <span class="error-text" id="reg-dob-error"></span>
+          </div>
+          <div class="field">
+            <label for="reg-zip">ZIP code</label>
+            <input type="text" id="reg-zip" autocomplete="postal-code" placeholder="11101">
+            <span class="error-text" id="reg-zip-error"></span>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="reg-ssn">Last four of your Social Security number
+            <span class="hint">Four digits only. A real application would never take the
+            whole number through a form like this.</span>
+          </label>
+          <input type="text" id="reg-ssn" inputmode="numeric" maxlength="4" style="max-width:8rem">
+          <span class="error-text" id="reg-ssn-error"></span>
+        </div>
+
+        <div class="field">
+          <label for="reg-pass">Password</label>
+          <input type="password" id="reg-pass" autocomplete="new-password">
+          <div class="meter" id="pass-meter" aria-hidden="true"><span></span></div>
+          <span class="meter-label" id="pass-label">Banking passwords need 10 characters, a capital, a number and a symbol.</span>
+          <span class="error-text" id="reg-pass-error"></span>
+        </div>
+
+        <div class="field">
+          <label for="reg-conf">Confirm password</label>
+          <input type="password" id="reg-conf" autocomplete="new-password">
+          <span class="error-text" id="reg-conf-error"></span>
+        </div>
+
+        <div class="field">
+          <label class="check">
+            <input type="checkbox" id="reg-terms">
+            <span>I have read and accept the <a href="terms.html">membership agreement</a>
+            and fee schedule.</span>
+          </label>
+          <span class="error-text" id="reg-terms-error"></span>
+        </div>
+
+        <button class="btn btn-block" type="submit">Open my account</button>
+        <p class="form-note">Already a member? <a href="login.html">Sign in instead</a>.</p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <div class="foot-mark">Meridian Credit Union</div>
+          <p>A not-for-profit cooperative owned by its members, serving Queens
+          and Brooklyn since 1954.</p>
+          <p style="margin-top:.8rem"><span class="ncua">Federally insured by NCUA</span></p>
+        </div>
+        <div>
+          <h4>Bank</h4>
+          <ul>
+            <li><a href="dashboard.html">Your accounts</a></li>
+            <li><a href="transfer.html">Transfer money</a></li>
+            <li><a href="billpay.html">Pay a bill</a></li>
+            <li><a href="loans.html">Loan calculator</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Join</h4>
+          <ul>
+            <li><a href="register.html">Open an account</a></li>
+            <li><a href="login.html">Sign in</a></li>
+            <li><a href="contact.html">Contact us</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="terms.html">Membership agreement</a></li>
+            <li><a href="terms.html">Fee schedule</a></li>
+            <li><a href="terms.html">Privacy &amp; security</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot-base">
+        <span>&copy; 2026 Meridian Credit Union &mdash; a student project for MAC172, LaGuardia Community College.</span>
+        <span>Routing 226078XXX</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
