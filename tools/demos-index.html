@@ -1,0 +1,1125 @@
+<title>Six Project Demos</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+
+<style>
+/* Layout: fixed header + tab rail, then a two-column panel — live demo left, rubric scorecard right, stacking to one column on phones. */
+:root{
+  --bg:#f5f6f8;
+  --surface:#ffffff;
+  --surface-2:#eceef1;
+  --fg:#13171b;
+  --muted:#59636d;
+  --line:#dce0e5;
+  --line-strong:#c2c8cf;
+  --accent:#1d4f6c;
+  --good:#1a7049;
+  --warn:#9a6212;
+  --bad:#a8322c;
+  --font-display:"Familjen Grotesk","Helvetica Neue",Arial,sans-serif;
+  --font-body:"Source Sans 3","Helvetica Neue",Arial,sans-serif;
+  --font-mono:"IBM Plex Mono","SF Mono",Menlo,Consolas,monospace;
+  --r:10px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#121619;
+    --surface:#1a1f24;
+    --surface-2:#232a30;
+    --fg:#e6eaee;
+    --muted:#9aa5ae;
+    --line:#2b333a;
+    --line-strong:#3c454e;
+    --accent:#6fb3d8;
+    --good:#4cb285;
+    --warn:#d9a44a;
+    --bad:#e08279;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121619;
+  --surface:#1a1f24;
+  --surface-2:#232a30;
+  --fg:#e6eaee;
+  --muted:#9aa5ae;
+  --line:#2b333a;
+  --line-strong:#3c454e;
+  --accent:#6fb3d8;
+  --good:#4cb285;
+  --warn:#d9a44a;
+  --bad:#e08279;
+  color-scheme:dark;
+}
+
+/* Per-demo accents — light */
+.panel[data-demo="shop"]   {--accent:#9b2d63}
+.panel[data-demo="rental"] {--accent:#1c6a47}
+.panel[data-demo="library"]{--accent:#8a4a16}
+.panel[data-demo="bank"]   {--accent:#1d4a78}
+.panel[data-demo="air"]    {--accent:#0d6372}
+.panel[data-demo="payroll"]{--accent:#584a8c}
+
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]) .panel[data-demo="shop"]   {--accent:#e58cb8}
+  :root:not([data-theme="light"]) .panel[data-demo="rental"] {--accent:#62c494}
+  :root:not([data-theme="light"]) .panel[data-demo="library"]{--accent:#dc9d5e}
+  :root:not([data-theme="light"]) .panel[data-demo="bank"]   {--accent:#7ab4e6}
+  :root:not([data-theme="light"]) .panel[data-demo="air"]    {--accent:#5bc0d0}
+  :root:not([data-theme="light"]) .panel[data-demo="payroll"]{--accent:#a899e0}
+}
+:root[data-theme="dark"] .panel[data-demo="shop"]   {--accent:#e58cb8}
+:root[data-theme="dark"] .panel[data-demo="rental"] {--accent:#62c494}
+:root[data-theme="dark"] .panel[data-demo="library"]{--accent:#dc9d5e}
+:root[data-theme="dark"] .panel[data-demo="bank"]   {--accent:#7ab4e6}
+:root[data-theme="dark"] .panel[data-demo="air"]    {--accent:#5bc0d0}
+:root[data-theme="dark"] .panel[data-demo="payroll"]{--accent:#a899e0}
+
+*{box-sizing:border-box}
+body{
+  background:var(--bg);
+  color:var(--fg);
+  font-family:var(--font-body);
+  font-size:15px;
+  line-height:1.5;
+  margin:0;
+}
+.wrap{
+  max-width:1120px;
+  margin:0 auto;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));
+  padding-right:max(16px, env(safe-area-inset-right, 0px));
+}
+h1,h2,h3,h4{font-family:var(--font-display);text-wrap:balance;margin:0}
+.mono{font-family:var(--font-mono);font-variant-numeric:tabular-nums}
+
+/* ---------- header ---------- */
+.page-head{padding-block:28px 18px}
+.eyebrow{
+  font-family:var(--font-mono);
+  font-size:11px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin:0 0 8px;
+}
+.page-head h1{font-size:clamp(26px,5vw,38px);font-weight:700;letter-spacing:-.015em}
+.lead{color:var(--muted);max-width:62ch;margin:10px 0 0;font-size:16px}
+
+.rubric{
+  display:flex;flex-wrap:wrap;gap:8px;
+  margin-top:18px;padding:0;list-style:none;
+}
+.rubric li{
+  font-family:var(--font-mono);font-size:11.5px;
+  border:1px solid var(--line);
+  background:var(--surface);
+  border-radius:999px;
+  padding:5px 11px;
+  color:var(--muted);
+}
+.rubric li b{color:var(--fg);font-weight:600}
+.rubric li.key{border-color:var(--line-strong);color:var(--fg)}
+
+/* ---------- tabs ---------- */
+.tabrail{
+  position:sticky;
+  top:env(safe-area-inset-top, 0px);
+  z-index:10;
+  background:var(--bg);
+  border-bottom:1px solid var(--line);
+}
+body::before{
+  content:"";position:fixed;inset:0 0 auto;
+  height:env(safe-area-inset-top, 0px);
+  z-index:10;background:var(--bg);
+}
+.tabs{
+  display:flex;gap:2px;overflow-x:auto;
+  padding-block:0;
+  scrollbar-width:thin;
+}
+.tab{
+  flex:0 0 auto;
+  display:flex;align-items:baseline;gap:7px;
+  background:none;border:0;border-bottom:2px solid transparent;
+  padding:12px 14px;
+  font-family:var(--font-display);font-size:14.5px;font-weight:600;
+  color:var(--muted);cursor:pointer;white-space:nowrap;
+}
+.tab .rank{
+  font-family:var(--font-mono);font-size:10.5px;font-weight:500;
+  color:var(--muted);opacity:.75;
+}
+.tab:hover{color:var(--fg)}
+.tab[aria-selected="true"]{color:var(--fg);border-bottom-color:var(--tabc,var(--fg))}
+.tab[aria-selected="true"] .rank{color:var(--tabc,var(--fg));opacity:1}
+.tab:focus-visible{outline:2px solid var(--fg);outline-offset:-3px;border-radius:4px}
+.tab[data-demo="shop"]   {--tabc:#9b2d63}
+.tab[data-demo="rental"] {--tabc:#1c6a47}
+.tab[data-demo="library"]{--tabc:#8a4a16}
+.tab[data-demo="bank"]   {--tabc:#1d4a78}
+.tab[data-demo="air"]    {--tabc:#0d6372}
+.tab[data-demo="payroll"]{--tabc:#584a8c}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]) .tab[data-demo="shop"]   {--tabc:#e58cb8}
+  :root:not([data-theme="light"]) .tab[data-demo="rental"] {--tabc:#62c494}
+  :root:not([data-theme="light"]) .tab[data-demo="library"]{--tabc:#dc9d5e}
+  :root:not([data-theme="light"]) .tab[data-demo="bank"]   {--tabc:#7ab4e6}
+  :root:not([data-theme="light"]) .tab[data-demo="air"]    {--tabc:#5bc0d0}
+  :root:not([data-theme="light"]) .tab[data-demo="payroll"]{--tabc:#a899e0}
+}
+:root[data-theme="dark"] .tab[data-demo="shop"]   {--tabc:#e58cb8}
+:root[data-theme="dark"] .tab[data-demo="rental"] {--tabc:#62c494}
+:root[data-theme="dark"] .tab[data-demo="library"]{--tabc:#dc9d5e}
+:root[data-theme="dark"] .tab[data-demo="bank"]   {--tabc:#7ab4e6}
+:root[data-theme="dark"] .tab[data-demo="air"]    {--tabc:#5bc0d0}
+:root[data-theme="dark"] .tab[data-demo="payroll"]{--tabc:#a899e0}
+
+/* ---------- panel shell ---------- */
+.panel{padding-block:22px 40px}
+.panel-grid{display:grid;grid-template-columns:1fr 290px;gap:22px;align-items:start}
+@media (max-width:860px){.panel-grid{grid-template-columns:1fr}}
+.panel-grid > *{min-width:0}
+
+.sitecard{
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:var(--r);
+  overflow:hidden;
+}
+.sitebar{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:12px 16px;
+  background:var(--accent);
+  color:#fff;
+}
+:root[data-theme="dark"] .sitebar,
+.sitebar{color:#fff}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]) .sitebar{color:#10151a}
+}
+:root[data-theme="dark"] .sitebar{color:#10151a}
+.sitebar .brand{font-family:var(--font-display);font-weight:700;font-size:16px;letter-spacing:-.01em}
+.sitebar nav{display:flex;gap:14px;font-size:12.5px;opacity:.85;flex-wrap:wrap}
+@media (max-width:520px){.sitebar nav{display:none}}
+.sitebody{padding:18px 16px}
+.demo-note{
+  font-family:var(--font-mono);font-size:11px;color:var(--muted);
+  padding:9px 16px;border-top:1px solid var(--line);background:var(--surface-2);
+}
+
+h3.sec{font-size:13px;font-weight:600;letter-spacing:.02em;margin-bottom:10px}
+.hr{height:1px;background:var(--line);border:0;margin:16px 0}
+
+/* ---------- generic controls ---------- */
+label.fld{display:block;font-size:12px;color:var(--muted);font-weight:600;margin-bottom:5px}
+input[type=text],input[type=number],input[type=date],input[type=search],select{
+  width:100%;padding:8px 10px;
+  border:1px solid var(--line-strong);border-radius:7px;
+  background:var(--surface);color:var(--fg);
+  font-family:var(--font-body);font-size:14px;
+}
+input:focus-visible,select:focus-visible,button:focus-visible{
+  outline:2px solid var(--accent);outline-offset:1px;
+}
+.btn{
+  background:var(--accent);color:#fff;border:0;border-radius:7px;
+  padding:8px 14px;font-family:var(--font-body);font-size:13.5px;font-weight:600;
+  cursor:pointer;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]) .btn{color:#10151a}
+}
+:root[data-theme="dark"] .btn{color:#10151a}
+.btn:hover{filter:brightness(1.08)}
+.btn.ghost{
+  background:transparent;color:var(--accent);
+  border:1px solid currentColor;
+}
+.btn.sm{padding:5px 10px;font-size:12.5px}
+.row{display:flex;gap:10px;flex-wrap:wrap}
+.row > *{flex:1 1 150px;min-width:0}
+
+/* ---------- totals block ---------- */
+.totals{
+  background:var(--surface-2);border-radius:8px;padding:12px 14px;
+  font-family:var(--font-mono);font-size:13px;font-variant-numeric:tabular-nums;
+}
+.totals div{display:flex;justify-content:space-between;gap:12px;padding:3px 0}
+.totals .grand{
+  border-top:1px solid var(--line-strong);margin-top:6px;padding-top:8px;
+  font-weight:600;font-size:15px;color:var(--accent);
+}
+
+/* ---------- demo 1: shop ---------- */
+.prodgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:12px}
+.prod{border:1px solid var(--line);border-radius:8px;overflow:hidden;display:flex;flex-direction:column}
+.swatch{aspect-ratio:4/3;max-width:100%}
+.prod .pinfo{padding:9px 10px;display:flex;flex-direction:column;gap:7px;flex:1}
+.prod .pname{font-size:13px;font-weight:600;line-height:1.3}
+.prod .pprice{font-family:var(--font-mono);font-size:12.5px;color:var(--muted)}
+.cartlist{list-style:none;margin:0 0 12px;padding:0;font-size:13.5px}
+.cartlist li{display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px solid var(--line)}
+.cartlist .qty{font-family:var(--font-mono);color:var(--muted);font-size:12px}
+.empty{color:var(--muted);font-style:italic;font-size:13.5px;padding:8px 0}
+
+/* ---------- demo 2: rental ---------- */
+.fleet{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:14px}
+.car{
+  text-align:left;border:1px solid var(--line-strong);background:var(--surface);
+  border-radius:8px;padding:10px 12px;cursor:pointer;color:var(--fg);
+  font-family:var(--font-body);
+}
+.car[aria-pressed="true"]{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+.car .cls{font-size:13.5px;font-weight:600;display:block}
+.car .rate{font-family:var(--font-mono);font-size:12px;color:var(--muted)}
+.extras{display:flex;flex-direction:column;gap:7px;margin:12px 0}
+.extras label{display:flex;align-items:center;gap:8px;font-size:13.5px;cursor:pointer}
+.extras .x-price{margin-left:auto;font-family:var(--font-mono);font-size:12px;color:var(--muted)}
+
+/* ---------- demo 3: library ---------- */
+.books{list-style:none;margin:12px 0 0;padding:0;display:flex;flex-direction:column;gap:8px}
+.book{
+  display:flex;align-items:center;gap:12px;
+  border:1px solid var(--line);border-radius:8px;padding:9px 12px;
+}
+.book .bmeta{flex:1;min-width:0}
+.book .bt{font-size:13.5px;font-weight:600;line-height:1.3}
+.book .ba{font-size:12px;color:var(--muted)}
+.badge{
+  font-family:var(--font-mono);font-size:10.5px;letter-spacing:.04em;
+  text-transform:uppercase;padding:3px 8px;border-radius:999px;white-space:nowrap;
+}
+.badge.in{background:color-mix(in srgb, var(--good) 16%, transparent);color:var(--good)}
+.badge.out{background:color-mix(in srgb, var(--bad) 14%, transparent);color:var(--bad)}
+
+/* ---------- demo 4: bank ---------- */
+.accts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:14px}
+.acct{border:1px solid var(--line);border-radius:8px;padding:11px 13px;background:var(--surface-2)}
+.acct .an{font-size:12px;color:var(--muted);font-weight:600}
+.acct .ab{font-family:var(--font-mono);font-size:21px;font-weight:600;font-variant-numeric:tabular-nums;margin-top:3px}
+.txns{list-style:none;margin:10px 0 0;padding:0;font-size:13px}
+.txns li{display:flex;justify-content:space-between;gap:10px;padding:6px 0;border-bottom:1px solid var(--line)}
+.txns .td{color:var(--muted);font-family:var(--font-mono);font-size:11.5px}
+.txns .tv{font-family:var(--font-mono);font-variant-numeric:tabular-nums}
+.alert{
+  font-size:12.5px;padding:8px 11px;border-radius:7px;margin-top:10px;
+  background:color-mix(in srgb, var(--bad) 13%, transparent);color:var(--bad);
+}
+.alert.ok{background:color-mix(in srgb, var(--good) 13%, transparent);color:var(--good)}
+
+/* ---------- demo 5: airline ---------- */
+.flights{list-style:none;margin:12px 0 0;padding:0;display:flex;flex-direction:column;gap:8px}
+.flight{
+  display:flex;align-items:center;gap:12px;width:100%;text-align:left;
+  border:1px solid var(--line-strong);background:var(--surface);color:var(--fg);
+  border-radius:8px;padding:10px 12px;cursor:pointer;font-family:var(--font-body);
+}
+.flight[aria-pressed="true"]{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+.flight .fno{font-family:var(--font-mono);font-size:11.5px;color:var(--muted);width:58px;flex:0 0 auto}
+.flight .ftime{font-size:13.5px;font-weight:600;flex:1}
+.flight .ffare{font-family:var(--font-mono);font-size:13px}
+.cabin{margin-top:14px}
+.seatgrid{display:grid;grid-template-columns:repeat(2,28px) 18px repeat(2,28px);gap:6px;justify-content:center;margin-top:10px}
+.seat{
+  width:28px;height:28px;border-radius:5px;border:1px solid var(--line-strong);
+  background:var(--surface);cursor:pointer;
+  font-family:var(--font-mono);font-size:9.5px;color:var(--muted);padding:0;
+}
+.seat.taken{background:var(--surface-2);color:var(--line-strong);cursor:not-allowed}
+.seat[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]) .seat[aria-pressed="true"]{color:#10151a}
+}
+:root[data-theme="dark"] .seat[aria-pressed="true"]{color:#10151a}
+.aisle{align-self:center;text-align:center;font-family:var(--font-mono);font-size:9px;color:var(--muted)}
+.legend{display:flex;gap:14px;justify-content:center;margin-top:10px;font-size:11.5px;color:var(--muted)}
+.legend span{display:flex;align-items:center;gap:5px}
+.key{width:11px;height:11px;border-radius:3px;border:1px solid var(--line-strong);display:inline-block}
+.key.k-open{background:var(--surface)}
+.key.k-taken{background:var(--surface-2)}
+.key.k-sel{background:var(--accent);border-color:var(--accent)}
+
+/* ---------- demo 6: payroll ---------- */
+.stub{border:1px solid var(--line-strong);border-radius:8px;overflow:hidden;margin-top:14px}
+.stub-head{
+  background:var(--surface-2);padding:9px 13px;
+  display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap;
+}
+.stub-head .sn{font-family:var(--font-display);font-weight:600;font-size:14px}
+.stub-head .sp{font-family:var(--font-mono);font-size:11px;color:var(--muted)}
+table.pay{width:100%;border-collapse:collapse;font-size:13px}
+table.pay td{padding:6px 13px;border-bottom:1px solid var(--line)}
+table.pay td.v{text-align:right;font-family:var(--font-mono);font-variant-numeric:tabular-nums}
+table.pay tr.ded td{color:var(--muted)}
+table.pay tr.net td{
+  font-weight:700;font-size:15px;border-bottom:0;
+  background:color-mix(in srgb, var(--accent) 10%, transparent);color:var(--accent);
+}
+.tablewrap{overflow-x:auto}
+
+/* ---------- scorecard ---------- */
+.fit{
+  background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--r);padding:15px 16px;
+  position:sticky;top:calc(env(safe-area-inset-top, 0px) + 56px);
+}
+@media (max-width:860px){.fit{position:static}}
+.fit h3{font-size:14px;font-weight:700;letter-spacing:-.01em}
+.diff{display:flex;align-items:center;gap:9px;margin:11px 0 14px}
+.dots{display:flex;gap:3px}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--line-strong)}
+.dot.on{background:var(--accent)}
+.diff .dlabel{font-family:var(--font-mono);font-size:11px;color:var(--muted)}
+.fit h4{
+  font-family:var(--font-mono);font-size:10.5px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--muted);font-weight:500;
+  margin:14px 0 7px;
+}
+.pagelist{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:4px}
+.pagelist li{
+  font-family:var(--font-mono);font-size:10.5px;
+  border:1px solid var(--line);border-radius:5px;padding:2px 6px;color:var(--muted);
+}
+.jslist{margin:0;padding-left:17px;font-size:13px}
+.jslist li{margin-bottom:4px}
+.jslist li::marker{color:var(--accent)}
+.verdict{
+  margin-top:14px;padding-top:12px;border-top:1px solid var(--line);
+  font-size:13px;color:var(--muted);
+}
+.verdict b{color:var(--fg);font-weight:600}
+
+footer{padding-block:0 36px;color:var(--muted);font-size:13px}
+footer p{max-width:66ch}
+
+@media (prefers-reduced-motion: reduce){
+  *{animation:none!important;transition:none!important}
+}
+</style>
+
+<div class="wrap page-head">
+  <p class="eyebrow">MAC172 · Fall I 2026 · Group project</p>
+  <h1>Six project demos</h1>
+  <p class="lead">A working slice of each topic from the project handout, ranked easiest to hardest to build. Each one runs the feature that would carry its demo video. Pick one, then build it out to eight pages.</p>
+  <ul class="rubric">
+    <li class="key"><b>8+</b> pages</li>
+    <li class="key"><b>3+</b> JS items, registration form required</li>
+    <li>Content <b>20%</b></li>
+    <li>Layout <b>20%</b></li>
+    <li>CSS <b>20%</b></li>
+    <li>Report <b>15%</b></li>
+    <li>Video <b>15%</b></li>
+    <li>Presentation <b>10%</b></li>
+    <li>Bootstrap or PHP/MySQL <b>+10%</b></li>
+  </ul>
+</div>
+
+<div class="tabrail">
+  <div class="wrap">
+    <div class="tabs" role="tablist" aria-label="Project topics">
+      <button class="tab" role="tab" data-demo="shop"    id="t-shop"    aria-controls="p-shop"    aria-selected="true"><span class="rank">1</span>Online shopping</button>
+      <button class="tab" role="tab" data-demo="rental"  id="t-rental"  aria-controls="p-rental"  aria-selected="false"><span class="rank">2</span>Car rentals</button>
+      <button class="tab" role="tab" data-demo="library" id="t-library" aria-controls="p-library" aria-selected="false"><span class="rank">3</span>Library</button>
+      <button class="tab" role="tab" data-demo="bank"    id="t-bank"    aria-controls="p-bank"    aria-selected="false"><span class="rank">4</span>Online banking</button>
+      <button class="tab" role="tab" data-demo="air"     id="t-air"     aria-controls="p-air"     aria-selected="false"><span class="rank">5</span>Airline</button>
+      <button class="tab" role="tab" data-demo="payroll" id="t-payroll" aria-controls="p-payroll" aria-selected="false"><span class="rank">6</span>HR &amp; payroll</button>
+    </div>
+  </div>
+</div>
+
+<main>
+
+<!-- ============ 1. SHOP ============ -->
+<section class="wrap panel" data-demo="shop" id="p-shop" role="tabpanel" aria-labelledby="t-shop">
+<div class="panel-grid">
+  <div class="sitecard">
+    <div class="sitebar">
+      <span class="brand">Thread &amp; Co.</span>
+      <nav><span>Shop</span><span>Collections</span><span>About</span><span>Cart</span></nav>
+    </div>
+    <div class="sitebody">
+      <h3 class="sec">New arrivals</h3>
+      <div class="prodgrid" id="shop-grid"></div>
+      <hr class="hr">
+      <h3 class="sec">Your cart</h3>
+      <ul class="cartlist" id="cart-list"></ul>
+      <div class="totals">
+        <div><span>Subtotal</span><span id="cart-sub">$0.00</span></div>
+        <div><span>Sales tax (8.875%)</span><span id="cart-tax">$0.00</span></div>
+        <div><span>Shipping</span><span id="cart-ship">$0.00</span></div>
+        <div class="grand"><span>Total</span><span id="cart-total">$0.00</span></div>
+      </div>
+    </div>
+    <p class="demo-note">Live JS: cart array, quantity merge, NYC combined sales tax, free shipping over $75.</p>
+  </div>
+
+  <aside class="fit">
+    <h3>Online shopping</h3>
+    <div class="diff">
+      <span class="dots"><i class="dot on"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></span>
+      <span class="dlabel">Easiest</span>
+    </div>
+    <h4>Pages to 8+</h4>
+    <ul class="pagelist"><li>Home</li><li>Shop</li><li>Product</li><li>Cart</li><li>Checkout</li><li>Register</li><li>Login</li><li>Contact</li><li>Terms</li></ul>
+    <h4>JavaScript items</h4>
+    <ol class="jslist">
+      <li>Registration form validation</li>
+      <li>Add to cart and running total</li>
+      <li>Filter or sort the product grid</li>
+    </ol>
+    <p class="verdict"><b>Safest choice.</b> Nothing to invent, images everywhere, and every piece of logic is addition. The cost is that several other teams will submit the same site, so layout is where you'd separate.</p>
+  </aside>
+</div>
+</section>
+
+<!-- ============ 2. RENTAL ============ -->
+<section class="wrap panel" data-demo="rental" id="p-rental" role="tabpanel" aria-labelledby="t-rental" hidden>
+<div class="panel-grid">
+  <div class="sitecard">
+    <div class="sitebar">
+      <span class="brand">Hudson Auto Rental</span>
+      <nav><span>Fleet</span><span>Locations</span><span>Deals</span><span>My booking</span></nav>
+    </div>
+    <div class="sitebody">
+      <h3 class="sec">Choose a vehicle</h3>
+      <div class="fleet" id="fleet"></div>
+
+      <div class="row">
+        <div><label class="fld" for="r-pick">Pick-up</label><input type="date" id="r-pick"></div>
+        <div><label class="fld" for="r-drop">Return</label><input type="date" id="r-drop"></div>
+      </div>
+
+      <div class="extras" id="r-extras">
+        <label><input type="checkbox" data-x="cdw" data-cost="19" checked> Collision damage waiver <span class="x-price">$19/day</span></label>
+        <label><input type="checkbox" data-x="gps" data-cost="7"> GPS navigation <span class="x-price">$7/day</span></label>
+        <label><input type="checkbox" data-x="drv" data-cost="12"> Additional driver <span class="x-price">$12/day</span></label>
+      </div>
+
+      <div class="totals">
+        <div><span id="r-days-label">Rental days</span><span id="r-days">0</span></div>
+        <div><span>Vehicle rate</span><span id="r-base">$0.00</span></div>
+        <div><span>Options</span><span id="r-opts">$0.00</span></div>
+        <div><span>Taxes &amp; airport fees (14.5%)</span><span id="r-tax">$0.00</span></div>
+        <div class="grand"><span>Estimated total</span><span id="r-total">$0.00</span></div>
+      </div>
+    </div>
+    <p class="demo-note">Live JS: date difference in days, per-day rate × options, NY airport concession recovery fee.</p>
+  </div>
+
+  <aside class="fit">
+    <h3>Car rentals</h3>
+    <div class="diff">
+      <span class="dots"><i class="dot on"></i><i class="dot on"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></span>
+      <span class="dlabel">Easy</span>
+    </div>
+    <h4>Pages to 8+</h4>
+    <ul class="pagelist"><li>Home</li><li>Fleet</li><li>Vehicle</li><li>Booking</li><li>Locations</li><li>Register</li><li>Login</li><li>Contact</li><li>Terms</li></ul>
+    <h4>JavaScript items</h4>
+    <ol class="jslist">
+      <li>Registration form validation</li>
+      <li>Rental cost calculator with dates</li>
+      <li>Filter the fleet by class or price</li>
+    </ol>
+    <p class="verdict"><b>Best value for the effort.</b> Only real addition over shopping is subtracting two dates. The total recalculating as you change dates is the strongest thing you can put in a three-minute video.</p>
+  </aside>
+</div>
+</section>
+
+<!-- ============ 3. LIBRARY ============ -->
+<section class="wrap panel" data-demo="library" id="p-library" role="tabpanel" aria-labelledby="t-library" hidden>
+<div class="panel-grid">
+  <div class="sitecard">
+    <div class="sitebar">
+      <span class="brand">Bridgeview Public Library</span>
+      <nav><span>Catalog</span><span>My account</span><span>Hours</span><span>Events</span></nav>
+    </div>
+    <div class="sitebody">
+      <h3 class="sec">Search the catalog</h3>
+      <div class="row">
+        <div style="flex:2 1 200px"><label class="fld" for="lib-q">Title or author</label><input type="search" id="lib-q" placeholder="Try &ldquo;Morrison&rdquo;"></div>
+        <div><label class="fld" for="lib-g">Genre</label>
+          <select id="lib-g">
+            <option value="">All genres</option>
+            <option>Fiction</option><option>History</option>
+            <option>Science</option><option>Poetry</option>
+          </select>
+        </div>
+      </div>
+      <p class="demo-note" style="border:0;background:none;padding:10px 0 0" id="lib-count"></p>
+      <ul class="books" id="lib-list"></ul>
+      <p id="lib-due" class="alert ok" hidden></p>
+    </div>
+    <p class="demo-note">Live JS: case-insensitive filter across two fields, availability state, 21-day due date from today.</p>
+  </div>
+
+  <aside class="fit">
+    <h3>Library management</h3>
+    <div class="diff">
+      <span class="dots"><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot"></i><i class="dot"></i></span>
+      <span class="dlabel">Moderate</span>
+    </div>
+    <h4>Pages to 8+</h4>
+    <ul class="pagelist"><li>Home</li><li>Catalog</li><li>Book</li><li>My loans</li><li>Hours</li><li>Register</li><li>Login</li><li>Contact</li><li>Policies</li></ul>
+    <h4>JavaScript items</h4>
+    <ol class="jslist">
+      <li>Registration form validation</li>
+      <li>Live catalog search and filter</li>
+      <li>Due date and late fee calculator</li>
+    </ol>
+    <p class="verdict"><b>Workable, duller.</b> The search is easy and the due-date math is easy. What costs you is Layout: rows of book titles don't photograph like cars or products, and that's 20% of the grade.</p>
+  </aside>
+</div>
+</section>
+
+<!-- ============ 4. BANK ============ -->
+<section class="wrap panel" data-demo="bank" id="p-bank" role="tabpanel" aria-labelledby="t-bank" hidden>
+<div class="panel-grid">
+  <div class="sitecard">
+    <div class="sitebar">
+      <span class="brand">Meridian Credit Union</span>
+      <nav><span>Accounts</span><span>Transfer</span><span>Pay bills</span><span>Sign out</span></nav>
+    </div>
+    <div class="sitebody">
+      <h3 class="sec">Your accounts</h3>
+      <div class="accts">
+        <div class="acct"><div class="an">Checking &middot;&middot;&middot;4417</div><div class="ab" id="bal-chk">$2,418.50</div></div>
+        <div class="acct"><div class="an">Savings &middot;&middot;&middot;9032</div><div class="ab" id="bal-sav">$7,940.00</div></div>
+      </div>
+
+      <h3 class="sec">Transfer funds</h3>
+      <div class="row">
+        <div><label class="fld" for="b-from">From</label>
+          <select id="b-from"><option value="chk">Checking &middot;&middot;&middot;4417</option><option value="sav">Savings &middot;&middot;&middot;9032</option></select>
+        </div>
+        <div><label class="fld" for="b-to">To</label>
+          <select id="b-to"><option value="sav">Savings &middot;&middot;&middot;9032</option><option value="chk">Checking &middot;&middot;&middot;4417</option></select>
+        </div>
+        <div><label class="fld" for="b-amt">Amount</label><input type="number" id="b-amt" min="0" step="0.01" value="250.00"></div>
+      </div>
+      <div style="margin-top:12px"><button class="btn" id="b-go">Transfer</button></div>
+      <p id="b-msg" class="alert" hidden></p>
+
+      <hr class="hr">
+      <h3 class="sec">Recent activity</h3>
+      <ul class="txns" id="b-txns"></ul>
+    </div>
+    <p class="demo-note">Live JS: balance validation, same-account guard, two-sided balance update, transaction log.</p>
+  </div>
+
+  <aside class="fit">
+    <h3>Online banking</h3>
+    <div class="diff">
+      <span class="dots"><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot"></i></span>
+      <span class="dlabel">Deceptive</span>
+    </div>
+    <h4>Pages to 8+</h4>
+    <ul class="pagelist"><li>Home</li><li>Accounts</li><li>Transfer</li><li>Bill pay</li><li>Statements</li><li>Register</li><li>Login</li><li>Contact</li><li>Security</li></ul>
+    <h4>JavaScript items</h4>
+    <ol class="jslist">
+      <li>Registration form validation</li>
+      <li>Transfer with balance checking</li>
+      <li>Loan or interest calculator</li>
+    </ol>
+    <p class="verdict"><b>Easy to code, hard to score.</b> The JS here is simpler than the car rental. The problem is Content and Layout: there's nothing to browse, so pages 6 through 9 get padded, and every screen is a form or a table.</p>
+  </aside>
+</div>
+</section>
+
+<!-- ============ 5. AIRLINE ============ -->
+<section class="wrap panel" data-demo="air" id="p-air" role="tabpanel" aria-labelledby="t-air" hidden>
+<div class="panel-grid">
+  <div class="sitecard">
+    <div class="sitebar">
+      <span class="brand">Empire Air</span>
+      <nav><span>Book</span><span>Check in</span><span>Status</span><span>Miles</span></nav>
+    </div>
+    <div class="sitebody">
+      <h3 class="sec">Find a flight</h3>
+      <div class="row">
+        <div><label class="fld" for="a-from">From</label>
+          <select id="a-from"><option>LGA</option><option>JFK</option><option>EWR</option></select>
+        </div>
+        <div><label class="fld" for="a-to">To</label>
+          <select id="a-to"><option>MIA</option><option>ORD</option><option>BOS</option><option>ATL</option></select>
+        </div>
+        <div><label class="fld" for="a-date">Depart</label><input type="date" id="a-date"></div>
+      </div>
+      <ul class="flights" id="a-list"></ul>
+
+      <div class="cabin" id="a-cabin" hidden>
+        <hr class="hr">
+        <h3 class="sec">Choose a seat &mdash; <span id="a-fno" class="mono"></span></h3>
+        <div class="seatgrid" id="a-seats"></div>
+        <div class="legend">
+          <span><i class="key k-open"></i>Open</span>
+          <span><i class="key k-taken"></i>Taken</span>
+          <span><i class="key k-sel"></i>Yours</span>
+        </div>
+        <div class="totals" style="margin-top:14px">
+          <div><span>Base fare</span><span id="a-base">$0.00</span></div>
+          <div><span id="a-seatlabel">Seat</span><span id="a-seatfee">$0.00</span></div>
+          <div><span>Taxes &amp; carrier fees</span><span id="a-tax">$0.00</span></div>
+          <div class="grand"><span>Total</span><span id="a-total">$0.00</span></div>
+        </div>
+      </div>
+    </div>
+    <p class="demo-note">Live JS: route and date filtering, seat map state, window and exit-row surcharges, September 11th Security Fee.</p>
+  </div>
+
+  <aside class="fit">
+    <h3>Airline reservation</h3>
+    <div class="diff">
+      <span class="dots"><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i></span>
+      <span class="dlabel">Hard</span>
+    </div>
+    <h4>Pages to 8+</h4>
+    <ul class="pagelist"><li>Home</li><li>Search</li><li>Results</li><li>Seats</li><li>Passenger</li><li>Payment</li><li>Register</li><li>Login</li><li>Contact</li></ul>
+    <h4>JavaScript items</h4>
+    <ol class="jslist">
+      <li>Registration form validation</li>
+      <li>Flight search across three fields</li>
+      <li>Seat map with fare recalculation</li>
+    </ol>
+    <p class="verdict"><b>High ceiling, real risk.</b> The seat map is the best-looking feature of any topic here, and it is also the one most likely to eat a week. Only pick this if your partner can carry half the build.</p>
+  </aside>
+</div>
+</section>
+
+<!-- ============ 6. PAYROLL ============ -->
+<section class="wrap panel" data-demo="payroll" id="p-payroll" role="tabpanel" aria-labelledby="t-payroll" hidden>
+<div class="panel-grid">
+  <div class="sitecard">
+    <div class="sitebar">
+      <span class="brand">Northstar HR</span>
+      <nav><span>Employees</span><span>Timesheets</span><span>Payroll</span><span>Reports</span></nav>
+    </div>
+    <div class="sitebody">
+      <h3 class="sec">Run payroll</h3>
+      <div class="row">
+        <div style="flex:2 1 180px"><label class="fld" for="p-emp">Employee</label><select id="p-emp"></select></div>
+        <div><label class="fld" for="p-reg">Regular hours</label><input type="number" id="p-reg" min="0" max="40" step="0.25" value="40"></div>
+        <div><label class="fld" for="p-ot">Overtime hours</label><input type="number" id="p-ot" min="0" step="0.25" value="6"></div>
+      </div>
+
+      <div class="stub">
+        <div class="stub-head">
+          <span class="sn" id="p-name">&nbsp;</span>
+          <span class="sp" id="p-period">&nbsp;</span>
+        </div>
+        <div class="tablewrap">
+        <table class="pay">
+          <tbody>
+            <tr><td>Regular <span class="mono" id="p-reglabel"></span></td><td class="v" id="p-regamt"></td></tr>
+            <tr><td>Overtime <span class="mono" id="p-otlabel"></span></td><td class="v" id="p-otamt"></td></tr>
+            <tr><td><b>Gross pay</b></td><td class="v" id="p-gross"></td></tr>
+            <tr class="ded"><td>Federal withholding (12%)</td><td class="v" id="p-fed"></td></tr>
+            <tr class="ded"><td>NY State withholding (5.5%)</td><td class="v" id="p-nys"></td></tr>
+            <tr class="ded"><td>Social Security (6.2%)</td><td class="v" id="p-ss"></td></tr>
+            <tr class="ded"><td>Medicare (1.45%)</td><td class="v" id="p-med"></td></tr>
+            <tr class="net"><td>Net pay</td><td class="v" id="p-net"></td></tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+    </div>
+    <p class="demo-note">Live JS: overtime at 1.5&times;, four statutory deduction rates, net pay, biweekly period dates.</p>
+  </div>
+
+  <aside class="fit">
+    <h3>HR &amp; payroll</h3>
+    <div class="diff">
+      <span class="dots"><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i><i class="dot on"></i></span>
+      <span class="dlabel">Hardest</span>
+    </div>
+    <h4>Pages to 8+</h4>
+    <ul class="pagelist"><li>Dashboard</li><li>Employees</li><li>Profile</li><li>Timesheet</li><li>Payroll</li><li>Reports</li><li>Register</li><li>Login</li><li>Policies</li></ul>
+    <h4>JavaScript items</h4>
+    <ol class="jslist">
+      <li>Registration form validation</li>
+      <li>Gross-to-net payroll calculator</li>
+      <li>Timesheet totals with overtime</li>
+    </ol>
+    <p class="verdict"><b>Worst fit of the six.</b> It's an internal admin tool: nine pages of forms and tables, the most domain research, and a demo video with nothing to look at. Avoid unless someone on the team already knows payroll.</p>
+  </aside>
+</div>
+</section>
+
+</main>
+
+<div class="wrap">
+<footer>
+  <p>Every topic needs the registration form, so that JavaScript item is fixed no matter what you pick. The two you choose freely are what actually differ above. Phase 1 is due October 29 and only asks for a description, a task list, a sitemap, and screenshots — the sitemaps in each scorecard are ready to use.</p>
+</footer>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var money = function(n){ return "$" + n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ","); };
+  var iso = function(d){ return d.toISOString().slice(0,10); };
+  var addDays = function(d, n){ var x = new Date(d.getTime()); x.setDate(x.getDate()+n); return x; };
+  var fmtDate = function(d){
+    return d.toLocaleDateString("en-US", {month:"short", day:"numeric", year:"numeric"});
+  };
+
+  /* ---------------- tabs ---------------- */
+  var tabs = Array.prototype.slice.call(document.querySelectorAll(".tab"));
+  function show(name){
+    tabs.forEach(function(t){
+      var on = t.dataset.demo === name;
+      t.setAttribute("aria-selected", on ? "true" : "false");
+      document.getElementById("p-" + t.dataset.demo).hidden = !on;
+    });
+  }
+  tabs.forEach(function(t, i){
+    t.addEventListener("click", function(){ show(t.dataset.demo); });
+    t.addEventListener("keydown", function(e){
+      var d = e.key === "ArrowRight" ? 1 : e.key === "ArrowLeft" ? -1 : 0;
+      if(!d) return;
+      e.preventDefault();
+      var next = tabs[(i + d + tabs.length) % tabs.length];
+      next.focus(); show(next.dataset.demo);
+    });
+  });
+
+  /* ---------------- 1. shop ---------------- */
+  var products = [
+    {id:"tee",  name:"Heavyweight Tee",  price:28, a:"#c98fb0", b:"#8d3c68"},
+    {id:"tote", name:"Canvas Tote",      price:34, a:"#b9a88a", b:"#7b6646"},
+    {id:"mug",  name:"Enamel Mug",       price:18, a:"#9bb6c4", b:"#4f7489"},
+    {id:"hat",  name:"Knit Beanie",      price:24, a:"#a8a3c4", b:"#5f5a86"}
+  ];
+  var cart = [{id:"tee", qty:1}];
+
+  function drawProducts(){
+    document.getElementById("shop-grid").innerHTML = products.map(function(p){
+      return '<div class="prod">' +
+        '<div class="swatch" style="background:linear-gradient(140deg,'+p.a+','+p.b+')"></div>' +
+        '<div class="pinfo">' +
+          '<span class="pname">'+p.name+'</span>' +
+          '<span class="pprice">'+money(p.price)+'</span>' +
+          '<button class="btn sm" data-add="'+p.id+'">Add to cart</button>' +
+        '</div></div>';
+    }).join("");
+  }
+  function drawCart(){
+    var list = document.getElementById("cart-list");
+    if(!cart.length){
+      list.innerHTML = '<li class="empty">Your cart is empty.</li>';
+    } else {
+      list.innerHTML = cart.map(function(c){
+        var p = products.filter(function(x){return x.id===c.id;})[0];
+        return '<li><span>'+p.name+' <span class="qty">&times;'+c.qty+'</span></span>' +
+               '<span class="mono">'+money(p.price*c.qty)+'</span></li>';
+      }).join("");
+    }
+    var sub = cart.reduce(function(s,c){
+      var p = products.filter(function(x){return x.id===c.id;})[0];
+      return s + p.price*c.qty;
+    }, 0);
+    var tax = sub * 0.08875;
+    var ship = (sub > 75 || sub === 0) ? 0 : 6.95;
+    document.getElementById("cart-sub").textContent = money(sub);
+    document.getElementById("cart-tax").textContent = money(tax);
+    document.getElementById("cart-ship").textContent = ship ? money(ship) : "Free";
+    document.getElementById("cart-total").textContent = money(sub + tax + ship);
+  }
+  document.getElementById("shop-grid").addEventListener("click", function(e){
+    var id = e.target.getAttribute && e.target.getAttribute("data-add");
+    if(!id) return;
+    var line = cart.filter(function(c){return c.id===id;})[0];
+    if(line){ line.qty++; } else { cart.push({id:id, qty:1}); }
+    drawCart();
+  });
+  drawProducts(); drawCart();
+
+  /* ---------------- 2. rental ---------------- */
+  var fleet = [
+    {id:"eco", cls:"Economy",  sub:"Nissan Versa",   rate:42},
+    {id:"suv", cls:"Mid SUV",  sub:"Toyota RAV4",    rate:78},
+    {id:"lux", cls:"Luxury",   sub:"BMW 5 Series",   rate:135}
+  ];
+  var pickedCar = "suv";
+  document.getElementById("fleet").innerHTML = fleet.map(function(c){
+    return '<button class="car" data-car="'+c.id+'" aria-pressed="'+(c.id===pickedCar)+'">' +
+      '<span class="cls">'+c.cls+'</span>' +
+      '<span class="rate">'+c.sub+' &middot; '+money(c.rate)+'/day</span></button>';
+  }).join("");
+
+  var today = new Date();
+  document.getElementById("r-pick").value = iso(addDays(today, 3));
+  document.getElementById("r-drop").value = iso(addDays(today, 8));
+
+  function calcRental(){
+    var pick = new Date(document.getElementById("r-pick").value + "T00:00:00");
+    var drop = new Date(document.getElementById("r-drop").value + "T00:00:00");
+    var days = 0;
+    if(!isNaN(pick) && !isNaN(drop)){
+      days = Math.round((drop - pick) / 86400000);
+    }
+    if(days < 1) days = 0;
+
+    var car = fleet.filter(function(c){return c.id===pickedCar;})[0];
+    var base = car.rate * days;
+    var perDayExtras = 0;
+    Array.prototype.forEach.call(
+      document.querySelectorAll('#r-extras input:checked'),
+      function(cb){ perDayExtras += Number(cb.dataset.cost); }
+    );
+    var opts = perDayExtras * days;
+    var tax = (base + opts) * 0.145;
+
+    document.getElementById("r-days").textContent = days;
+    document.getElementById("r-days-label").textContent =
+      days === 1 ? "Rental days (1 day)" : "Rental days";
+    document.getElementById("r-base").textContent = money(base);
+    document.getElementById("r-opts").textContent = money(opts);
+    document.getElementById("r-tax").textContent = money(tax);
+    document.getElementById("r-total").textContent = money(base + opts + tax);
+  }
+  document.getElementById("fleet").addEventListener("click", function(e){
+    var btn = e.target.closest && e.target.closest("[data-car]");
+    if(!btn) return;
+    pickedCar = btn.dataset.car;
+    Array.prototype.forEach.call(document.querySelectorAll("[data-car]"), function(b){
+      b.setAttribute("aria-pressed", String(b.dataset.car === pickedCar));
+    });
+    calcRental();
+  });
+  ["r-pick","r-drop"].forEach(function(id){
+    document.getElementById(id).addEventListener("change", calcRental);
+  });
+  document.getElementById("r-extras").addEventListener("change", calcRental);
+  calcRental();
+
+  /* ---------------- 3. library ---------------- */
+  var books = [
+    {t:"Beloved",                     a:"Toni Morrison",       g:"Fiction", in:true},
+    {t:"The Warmth of Other Suns",    a:"Isabel Wilkerson",    g:"History", in:true},
+    {t:"Braiding Sweetgrass",         a:"Robin Wall Kimmerer", g:"Science", in:false},
+    {t:"Citizen: An American Lyric",  a:"Claudia Rankine",     g:"Poetry",  in:true},
+    {t:"The Sixth Extinction",        a:"Elizabeth Kolbert",   g:"Science", in:true},
+    {t:"Song of Solomon",             a:"Toni Morrison",       g:"Fiction", in:false}
+  ];
+  function drawBooks(){
+    var q = document.getElementById("lib-q").value.trim().toLowerCase();
+    var g = document.getElementById("lib-g").value;
+    var hits = books.filter(function(b){
+      var textMatch = !q || b.t.toLowerCase().indexOf(q) > -1 || b.a.toLowerCase().indexOf(q) > -1;
+      return textMatch && (!g || b.g === g);
+    });
+    document.getElementById("lib-count").textContent =
+      hits.length + (hits.length === 1 ? " title" : " titles") + " in the catalog";
+    document.getElementById("lib-list").innerHTML = hits.map(function(b, i){
+      return '<li class="book">' +
+        '<div class="bmeta"><div class="bt">'+b.t+'</div>' +
+        '<div class="ba">'+b.a+' &middot; '+b.g+'</div></div>' +
+        '<span class="badge '+(b.in?"in":"out")+'">'+(b.in?"On shelf":"On loan")+'</span>' +
+        (b.in ? '<button class="btn sm ghost" data-borrow="'+b.t+'">Borrow</button>' : '') +
+        '</li>';
+    }).join("") || '<li class="empty">No titles match that search.</li>';
+  }
+  document.getElementById("lib-q").addEventListener("input", drawBooks);
+  document.getElementById("lib-g").addEventListener("change", drawBooks);
+  document.getElementById("lib-list").addEventListener("click", function(e){
+    var title = e.target.getAttribute && e.target.getAttribute("data-borrow");
+    if(!title) return;
+    var due = addDays(new Date(), 21);
+    var msg = document.getElementById("lib-due");
+    msg.textContent = "“" + title + "” checked out. Due " + fmtDate(due) + " — late fee $0.25/day after that.";
+    msg.hidden = false;
+  });
+  drawBooks();
+
+  /* ---------------- 4. bank ---------------- */
+  var bal = {chk: 2418.50, sav: 7940.00};
+  var names = {chk:"Checking ···4417", sav:"Savings ···9032"};
+  var txns = [
+    {d:"Oct 17", n:"Payroll deposit — Northstar", v:1284.22},
+    {d:"Oct 15", n:"MTA OMNY", v:-34.00},
+    {d:"Oct 14", n:"Key Food Supermarket", v:-86.41}
+  ];
+  function drawBank(){
+    document.getElementById("bal-chk").textContent = money(bal.chk);
+    document.getElementById("bal-sav").textContent = money(bal.sav);
+    document.getElementById("b-txns").innerHTML = txns.map(function(t){
+      return '<li><span>'+t.n+'<br><span class="td">'+t.d+'</span></span>' +
+             '<span class="tv">'+(t.v<0?"-":"+")+money(Math.abs(t.v))+'</span></li>';
+    }).join("");
+  }
+  document.getElementById("b-go").addEventListener("click", function(){
+    var from = document.getElementById("b-from").value;
+    var to   = document.getElementById("b-to").value;
+    var amt  = parseFloat(document.getElementById("b-amt").value);
+    var msg  = document.getElementById("b-msg");
+    msg.hidden = false;
+    msg.className = "alert";
+
+    if(from === to){ msg.textContent = "Choose two different accounts."; return; }
+    if(!(amt > 0)){ msg.textContent = "Enter an amount greater than zero."; return; }
+    if(amt > bal[from]){
+      msg.textContent = "Insufficient funds. " + names[from] + " holds " + money(bal[from]) + ".";
+      return;
+    }
+    bal[from] -= amt; bal[to] += amt;
+    var now = new Date();
+    txns.unshift({
+      d: now.toLocaleDateString("en-US",{month:"short",day:"numeric"}),
+      n: "Transfer to " + names[to], v: -amt
+    });
+    msg.className = "alert ok";
+    msg.textContent = money(amt) + " moved to " + names[to] + ".";
+    drawBank();
+  });
+  drawBank();
+
+  /* ---------------- 5. airline ---------------- */
+  var allFlights = [
+    {no:"EM 118", from:"LGA", to:"MIA", dep:"6:40a", arr:"9:52a", fare:148},
+    {no:"EM 204", from:"LGA", to:"MIA", dep:"11:15a", arr:"2:24p", fare:189},
+    {no:"EM 377", from:"LGA", to:"MIA", dep:"5:05p", arr:"8:18p", fare:134},
+    {no:"EM 512", from:"LGA", to:"ORD", dep:"7:20a", arr:"9:05a", fare:112},
+    {no:"EM 640", from:"JFK", to:"MIA", dep:"8:00a", arr:"11:14a", fare:166},
+    {no:"EM 705", from:"JFK", to:"BOS", dep:"6:15a", arr:"7:28a", fare:98},
+    {no:"EM 811", from:"EWR", to:"ATL", dep:"9:35a", arr:"12:10p", fare:143},
+    {no:"EM 902", from:"LGA", to:"BOS", dep:"4:50p", arr:"6:03p", fare:89}
+  ];
+  var takenSeats = ["1A","1C","2D","3B","3C","4A","5D","6B","6C"];
+  var chosen = null, chosenSeat = null;
+
+  document.getElementById("a-date").value = iso(addDays(new Date(), 14));
+
+  function drawFlights(){
+    var f = document.getElementById("a-from").value;
+    var t = document.getElementById("a-to").value;
+    var hits = allFlights.filter(function(x){ return x.from===f && x.to===t; });
+    document.getElementById("a-list").innerHTML = hits.length
+      ? hits.map(function(x){
+          return '<li><button class="flight" data-fno="'+x.no+'" aria-pressed="false">' +
+            '<span class="fno">'+x.no+'</span>' +
+            '<span class="ftime">'+x.dep+' → '+x.arr+'</span>' +
+            '<span class="ffare">'+money(x.fare)+'</span></button></li>';
+        }).join("")
+      : '<li class="empty">Empire Air does not serve '+f+' to '+t+'. Try another pair.</li>';
+    document.getElementById("a-cabin").hidden = true;
+    chosen = null; chosenSeat = null;
+  }
+  function drawSeats(){
+    var letters = ["A","C","D","F"];
+    var html = "";
+    for(var r=1; r<=6; r++){
+      for(var i=0; i<4; i++){
+        if(i === 2) html += '<span class="aisle">'+r+'</span>';
+        var code = r + letters[i];
+        var taken = takenSeats.indexOf(code) > -1;
+        html += '<button class="seat'+(taken?" taken":"")+'" data-seat="'+code+'"' +
+                (taken ? ' disabled aria-label="Seat '+code+' taken"' : ' aria-pressed="false"') +
+                '>'+code+'</button>';
+      }
+    }
+    document.getElementById("a-seats").innerHTML = html;
+  }
+  function seatFee(code){
+    if(!code) return 0;
+    var row = parseInt(code, 10);
+    var letter = code.slice(-1);
+    if(row <= 2) return 34;                       // bulkhead
+    if(row === 4) return 22;                      // exit row
+    if(letter === "A" || letter === "F") return 14; // window
+    return 0;
+  }
+  function calcFare(){
+    if(!chosen) return;
+    var fee = seatFee(chosenSeat);
+    var tax = chosen.fare * 0.075 + 5.60;         // excise + Sept 11 Security Fee
+    document.getElementById("a-base").textContent = money(chosen.fare);
+    document.getElementById("a-seatlabel").textContent =
+      chosenSeat ? "Seat " + chosenSeat : "Seat (none chosen)";
+    document.getElementById("a-seatfee").textContent = fee ? money(fee) : "Included";
+    document.getElementById("a-tax").textContent = money(tax);
+    document.getElementById("a-total").textContent = money(chosen.fare + fee + tax);
+  }
+  document.getElementById("a-list").addEventListener("click", function(e){
+    var btn = e.target.closest && e.target.closest("[data-fno]");
+    if(!btn) return;
+    chosen = allFlights.filter(function(x){ return x.no === btn.dataset.fno; })[0];
+    chosenSeat = null;
+    Array.prototype.forEach.call(document.querySelectorAll("[data-fno]"), function(b){
+      b.setAttribute("aria-pressed", String(b.dataset.fno === chosen.no));
+    });
+    document.getElementById("a-fno").textContent = chosen.no;
+    document.getElementById("a-cabin").hidden = false;
+    drawSeats();
+    calcFare();
+  });
+  document.getElementById("a-seats").addEventListener("click", function(e){
+    var btn = e.target.closest && e.target.closest("[data-seat]");
+    if(!btn || btn.disabled) return;
+    chosenSeat = btn.dataset.seat;
+    Array.prototype.forEach.call(document.querySelectorAll("[data-seat]"), function(b){
+      if(!b.disabled) b.setAttribute("aria-pressed", String(b.dataset.seat === chosenSeat));
+    });
+    calcFare();
+  });
+  ["a-from","a-to"].forEach(function(id){
+    document.getElementById(id).addEventListener("change", drawFlights);
+  });
+  drawFlights();
+  // open with the first result already chosen, so the panel shows a working state
+  (function(){
+    var first = document.querySelector("#a-list [data-fno]");
+    if(first) first.click();
+  })();
+
+  /* ---------------- 6. payroll ---------------- */
+  var staff = [
+    {id:"e1", name:"Dana Okafor",   title:"Warehouse Lead", rate:26.50},
+    {id:"e2", name:"Marcus Reyes",  title:"Driver",         rate:22.00},
+    {id:"e3", name:"Priya Raman",   title:"Dispatch",       rate:31.75}
+  ];
+  document.getElementById("p-emp").innerHTML = staff.map(function(s){
+    return '<option value="'+s.id+'">'+s.name+' — '+money(s.rate)+'/hr</option>';
+  }).join("");
+
+  function calcPay(){
+    var emp = staff.filter(function(s){
+      return s.id === document.getElementById("p-emp").value;
+    })[0];
+    var reg = Math.max(0, Number(document.getElementById("p-reg").value) || 0);
+    var ot  = Math.max(0, Number(document.getElementById("p-ot").value) || 0);
+
+    var regAmt = reg * emp.rate;
+    var otAmt  = ot * emp.rate * 1.5;
+    var gross  = regAmt + otAmt;
+    var fed = gross * 0.12, nys = gross * 0.055;
+    var ss  = gross * 0.062, med = gross * 0.0145;
+    var net = gross - fed - nys - ss - med;
+
+    var end = new Date();
+    var start = addDays(end, -13);
+
+    document.getElementById("p-name").textContent = emp.name + " · " + emp.title;
+    document.getElementById("p-period").textContent =
+      "Pay period " + fmtDate(start) + " – " + fmtDate(end);
+    document.getElementById("p-reglabel").textContent = reg + " hrs @ " + money(emp.rate);
+    document.getElementById("p-otlabel").textContent  = ot + " hrs @ " + money(emp.rate * 1.5);
+    document.getElementById("p-regamt").textContent = money(regAmt);
+    document.getElementById("p-otamt").textContent  = money(otAmt);
+    document.getElementById("p-gross").textContent  = money(gross);
+    document.getElementById("p-fed").textContent = "-" + money(fed);
+    document.getElementById("p-nys").textContent = "-" + money(nys);
+    document.getElementById("p-ss").textContent  = "-" + money(ss);
+    document.getElementById("p-med").textContent = "-" + money(med);
+    document.getElementById("p-net").textContent = money(net);
+  }
+  ["p-emp","p-reg","p-ot"].forEach(function(id){
+    document.getElementById(id).addEventListener("input", calcPay);
+    document.getElementById(id).addEventListener("change", calcPay);
+  });
+  calcPay();
+})();
+</script>
