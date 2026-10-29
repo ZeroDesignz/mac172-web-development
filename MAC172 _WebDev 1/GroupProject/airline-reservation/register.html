@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Join Kestrel Club: free checked bag, miles that never expire, no annual fee.">
+  <title>Join Kestrel Club | Kestrel Air</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="site-head">
+    <div class="wrap head-bar">
+      <a class="wordmark" href="index.html">
+        <span class="wm-mark" aria-hidden="true"></span>
+        <span>Kestrel Air</span>
+      </a>
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="mainnav">Menu</button>
+      <nav class="mainnav" id="mainnav" aria-label="Main navigation">
+        <a href="index.html">Book</a>
+        <a href="flights.html">Flights</a>
+        <a href="destinations.html">Where we fly</a>
+        <a href="manage.html">My trips</a>
+        <a href="contact.html">Help</a>
+        <a href="login.html">Sign in</a>
+        <a class="btn btn-sm" href="register.html">Join Kestrel Club</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="page-head">
+      <div class="wrap">
+        <p class="eyebrow">Kestrel Club</p>
+        <h1>Miles that do not expire</h1>
+        <p class="lede">Free to join. One mile for every mile flown, a free
+        checked bag from your first flight, and no blackout dates because we do
+        not have enough routes to need them.</p>
+      </div>
+    </div>
+
+    <section class="tight">
+      <div class="wrap">
+        <div class="split">
+          <div>
+            <form id="reg-form" novalidate>
+              <fieldset>
+                <legend>Your name</legend>
+                <div class="row row-2">
+                  <div class="field">
+                    <label for="rfn">First name</label>
+                    <input type="text" id="rfn" data-rule="name" required>
+                  </div>
+                  <div class="field">
+                    <label for="rln">Last name</label>
+                    <input type="text" id="rln" data-rule="name" required>
+                  </div>
+                </div>
+                <div class="field">
+                  <label for="rdob">Date of birth</label>
+                  <input type="date" id="rdob" data-rule="dob" required>
+                </div>
+              </fieldset>
+
+              <fieldset>
+                <legend>How we reach you</legend>
+                <div class="row row-2">
+                  <div class="field">
+                    <label for="remail">Email address</label>
+                    <input type="email" id="remail" data-rule="email" required>
+                  </div>
+                  <div class="field">
+                    <label for="rphone">Mobile number</label>
+                    <input type="tel" id="rphone" data-rule="phone"
+                      placeholder="(212) 555-0147" required>
+                  </div>
+                </div>
+              </fieldset>
+
+              <fieldset>
+                <legend>Password</legend>
+                <div class="field">
+                  <label for="pw">Choose a password</label>
+                  <input type="password" id="pw" data-rule="pw" required>
+                  <div class="meter" id="pw-meter"><i></i></div>
+                  <div class="hint">At least 8 characters, one capital and one
+                  number. Strength: <span id="pw-word">&mdash;</span></div>
+                </div>
+                <div class="field">
+                  <label for="pw2">Repeat it</label>
+                  <input type="password" id="pw2" data-rule="pw2" required>
+                </div>
+                <label class="check">
+                  <input type="checkbox" id="terms">
+                  <span>I accept the <a href="terms.html">programme terms</a>.</span>
+                </label>
+                <div class="err" id="terms-err"></div>
+              </fieldset>
+
+              <button type="submit" class="btn btn-lg">Create my account</button>
+            </form>
+          </div>
+
+          <aside class="aside">
+            <div class="card">
+              <h3>What membership gets you</h3>
+              <table>
+                <tr><td>First checked bag</td><td class="num">Free</td></tr>
+                <tr><td>Extra legroom</td><td class="num">Half price</td></tr>
+                <tr><td>Miles per mile flown</td><td class="num">1</td></tr>
+                <tr><td>Mile expiry</td><td class="num">Never</td></tr>
+                <tr><td>Annual fee</td><td class="num">$0</td></tr>
+              </table>
+              <p class="faint" style="margin-top:.9rem">A round trip to Los
+              Angeles earns about 4,950 miles. An award seat on the same route
+              costs 12,500.</p>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <div class="foot-mark">Kestrel Air</div>
+          <p>A fictional carrier built for MAC172 Web Development I at
+          LaGuardia Community College. Ten cities, one hub at JFK, and no
+          real aeroplanes whatsoever.</p>
+        </div>
+        <div>
+          <h4>Travel</h4>
+          <a href="index.html">Book a flight</a>
+          <a href="destinations.html">Where we fly</a>
+          <a href="manage.html">Manage a booking</a>
+          <a href="seats.html">Seat maps</a>
+        </div>
+        <div>
+          <h4>Kestrel Club</h4>
+          <a href="register.html">Join the programme</a>
+          <a href="login.html">Sign in</a>
+          <a href="destinations.html">Award destinations</a>
+        </div>
+        <div>
+          <h4>Help</h4>
+          <a href="contact.html">Contact us</a>
+          <a href="terms.html">Conditions of carriage</a>
+          <a href="terms.html#baggage">Baggage</a>
+        </div>
+      </div>
+      <div class="foot-base">
+        <span>&copy; 2026 Kestrel Air. Student coursework &mdash; not a real airline.</span>
+        <span class="code">HTML &middot; CSS &middot; JavaScript</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Contact Kestrel Air by message or phone.">
+  <title>Help | Kestrel Air</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="site-head">
+    <div class="wrap head-bar">
+      <a class="wordmark" href="index.html">
+        <span class="wm-mark" aria-hidden="true"></span>
+        <span>Kestrel Air</span>
+      </a>
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="mainnav">Menu</button>
+      <nav class="mainnav" id="mainnav" aria-label="Main navigation">
+        <a href="index.html">Book</a>
+        <a href="flights.html">Flights</a>
+        <a href="destinations.html">Where we fly</a>
+        <a href="manage.html">My trips</a>
+        <a href="contact.html" class="current">Help</a>
+        <a href="login.html">Sign in</a>
+        <a class="btn btn-sm" href="register.html">Join Kestrel Club</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="page-head">
+      <div class="wrap">
+        <p class="eyebrow">Help</p>
+        <h1>Talk to a person</h1>
+        <p class="lede">We answer most messages within one business day. For a
+        flight in the next 24 hours, call instead &mdash; it is faster.</p>
+      </div>
+    </div>
+
+    <section class="tight">
+      <div class="wrap">
+        <div class="split">
+          <div>
+            <form id="contact-form" novalidate>
+              <div class="row row-2">
+                <div class="field">
+                  <label for="cname">Your name</label>
+                  <input type="text" id="cname" data-rule="name" required>
+                </div>
+                <div class="field">
+                  <label for="cemail">Email address</label>
+                  <input type="email" id="cemail" data-rule="email" required>
+                </div>
+              </div>
+              <div class="row row-2">
+                <div class="field">
+                  <label for="cphone">Mobile number</label>
+                  <input type="tel" id="cphone" data-rule="phone"
+                    placeholder="(212) 555-0147" required>
+                </div>
+                <div class="field">
+                  <label for="ctopic">What is it about?</label>
+                  <select id="ctopic">
+                    <option>An existing booking</option>
+                    <option>Baggage</option>
+                    <option>A delay or cancellation</option>
+                    <option>Kestrel Club miles</option>
+                    <option>Accessibility</option>
+                    <option>Something else</option>
+                  </select>
+                </div>
+              </div>
+              <div class="field">
+                <label for="message">Your message</label>
+                <textarea id="message" maxlength="700"></textarea>
+                <div class="hint"><span id="chars">0 / 600</span> &middot; include
+                your record locator if you have one.</div>
+                <div class="err"></div>
+              </div>
+              <button type="submit" class="btn btn-lg">Send the message</button>
+            </form>
+          </div>
+
+          <aside class="aside">
+            <div class="card">
+              <h3>Faster than writing</h3>
+              <table>
+                <tr><td>Reservations</td><td class="num">(212) 555-0100</td></tr>
+                <tr><td>Baggage</td><td class="num">(212) 555-0144</td></tr>
+                <tr><td>Accessibility</td><td class="num">(212) 555-0188</td></tr>
+                <tr><td>Kestrel Club</td><td class="num">(212) 555-0122</td></tr>
+              </table>
+              <p class="faint" style="margin-top:.9rem">Lines are open 05:00 to
+              23:00 Eastern, every day.</p>
+              <hr style="border:none;border-top:1px solid var(--line);margin:1rem 0">
+              <h4>At JFK</h4>
+              <p class="muted" style="font-size:.92rem">Terminal 7, departures
+              level. The Kestrel desk is opposite gate A4 and is staffed from
+              two hours before the first departure.</p>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <div class="foot-mark">Kestrel Air</div>
+          <p>A fictional carrier built for MAC172 Web Development I at
+          LaGuardia Community College. Ten cities, one hub at JFK, and no
+          real aeroplanes whatsoever.</p>
+        </div>
+        <div>
+          <h4>Travel</h4>
+          <a href="index.html">Book a flight</a>
+          <a href="destinations.html">Where we fly</a>
+          <a href="manage.html">Manage a booking</a>
+          <a href="seats.html">Seat maps</a>
+        </div>
+        <div>
+          <h4>Kestrel Club</h4>
+          <a href="register.html">Join the programme</a>
+          <a href="login.html">Sign in</a>
+          <a href="destinations.html">Award destinations</a>
+        </div>
+        <div>
+          <h4>Help</h4>
+          <a href="contact.html">Contact us</a>
+          <a href="terms.html">Conditions of carriage</a>
+          <a href="terms.html#baggage">Baggage</a>
+        </div>
+      </div>
+      <div class="foot-base">
+        <span>&copy; 2026 Kestrel Air. Student coursework &mdash; not a real airline.</span>
+        <span class="code">HTML &middot; CSS &middot; JavaScript</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

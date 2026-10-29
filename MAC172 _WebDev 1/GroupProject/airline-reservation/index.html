@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Book flights with Kestrel Air: ten US cities from JFK, fares that include every tax and fee.">
+  <title>Book a flight | Kestrel Air</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="site-head">
+    <div class="wrap head-bar">
+      <a class="wordmark" href="index.html">
+        <span class="wm-mark" aria-hidden="true"></span>
+        <span>Kestrel Air</span>
+      </a>
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="mainnav">Menu</button>
+      <nav class="mainnav" id="mainnav" aria-label="Main navigation">
+        <a href="index.html" class="current">Book</a>
+        <a href="flights.html">Flights</a>
+        <a href="destinations.html">Where we fly</a>
+        <a href="manage.html">My trips</a>
+        <a href="contact.html">Help</a>
+        <a href="login.html">Sign in</a>
+        <a class="btn btn-sm" href="register.html">Join Kestrel Club</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <p class="eyebrow">Ten cities &middot; One hub at JFK</p>
+        <h1>Fares you can read in one line.</h1>
+        <p class="lede">No bundles, no fare families, no asterisk that changes
+        the price at the last screen. The number on the board is the number on
+        the card.</p>
+
+        <div class="search-card" style="margin-top:2rem">
+          <form id="search-form" novalidate>
+            <div class="trip-tabs">
+              <button type="button" class="trip-tab on" data-trip="round">Round trip</button>
+              <button type="button" class="trip-tab" data-trip="one">One way</button>
+            </div>
+
+            <div class="search-grid">
+              <div class="field" style="margin:0">
+                <label for="from">From</label>
+                <select id="from">
+                  <option value="">Choose an airport</option>
+            <option value="JFK">New York (JFK)</option>
+            <option value="LAX">Los Angeles (LAX)</option>
+            <option value="ORD">Chicago (ORD)</option>
+            <option value="MIA">Miami (MIA)</option>
+            <option value="DEN">Denver (DEN)</option>
+            <option value="SEA">Seattle (SEA)</option>
+            <option value="ATL">Atlanta (ATL)</option>
+            <option value="BOS">Boston (BOS)</option>
+            <option value="SFO">San Francisco (SFO)</option>
+            <option value="AUS">Austin (AUS)</option>
+                </select>
+              </div>
+              <div class="field" style="margin:0">
+                <label for="to">To</label>
+                <select id="to">
+                  <option value="">Choose an airport</option>
+            <option value="JFK">New York (JFK)</option>
+            <option value="LAX">Los Angeles (LAX)</option>
+            <option value="ORD">Chicago (ORD)</option>
+            <option value="MIA">Miami (MIA)</option>
+            <option value="DEN">Denver (DEN)</option>
+            <option value="SEA">Seattle (SEA)</option>
+            <option value="ATL">Atlanta (ATL)</option>
+            <option value="BOS">Boston (BOS)</option>
+            <option value="SFO">San Francisco (SFO)</option>
+            <option value="AUS">Austin (AUS)</option>
+                </select>
+              </div>
+              <div class="field" style="margin:0">
+                <label for="depart">Departing</label>
+                <input type="date" id="depart">
+              </div>
+              <div class="field" id="ret-wrap" style="margin:0">
+                <label for="ret">Returning</label>
+                <input type="date" id="ret">
+              </div>
+              <div class="field" style="margin:0">
+                <label for="pax">Passengers</label>
+                <input type="number" id="pax" value="1" min="1" max="6">
+              </div>
+            </div>
+
+            <div class="btn-row" style="margin-top:1.1rem">
+              <button type="submit" class="btn btn-lg">Search flights</button>
+              <span class="faint">Fares shown include all taxes and fees.</span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="grid g4">
+          <div class="stat"><div class="n">10</div>
+            <div class="l">Cities, all reachable nonstop from JFK</div></div>
+          <div class="stat"><div class="n">87%</div>
+            <div class="l">Departures within fifteen minutes of schedule</div></div>
+          <div class="stat"><div class="n">2</div>
+            <div class="l">Free carry-on bags, every fare, no exceptions</div></div>
+          <div class="stat"><div class="n">$0</div>
+            <div class="l">Change fee on any booking, any time</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sunk">
+      <div class="wrap">
+        <div class="sec-head">
+          <h2>Why people book with us twice</h2>
+          <p class="muted">Three decisions, all of which cost us money and all
+          of which we have kept.</p>
+        </div>
+        <div class="grid g3">
+          <div class="card">
+            <span class="tag tag-new">No change fee</span>
+            <h3 style="margin-top:.7rem">Change it, free, until departure</h3>
+            <p class="muted">Move to another Kestrel flight on the same route at
+            no charge. If the new fare is lower, the difference comes back to
+            you as a travel credit rather than disappearing.</p>
+          </div>
+          <div class="card">
+            <span class="tag tag-go">Seats included</span>
+            <h3 style="margin-top:.7rem">A seat assignment is not an upsell</h3>
+            <p class="muted">Every main-cabin seat is free to choose. Extra
+            legroom and first cost more because the seat is bigger, not because
+            we hid the ordinary one behind a paywall.</p>
+          </div>
+          <div class="card">
+            <span class="tag tag-hold">Delay policy</span>
+            <h3 style="margin-top:.7rem">Three hours and we pay you</h3>
+            <p class="muted">A controllable delay past three hours earns a $150
+            credit automatically. You do not have to ask, and you do not have to
+            find the form.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="sec-head"><h2>Popular this week</h2></div>
+        <div class="grid g3">
+          <div class="dest">
+            <div class="dest-sky sky-a"></div>
+            <div class="dest-body">
+              <div class="dest-iata">JFK &rarr; MIA</div>
+              <h3>Miami</h3>
+              <p class="muted">Three nonstops a day, the first out at 06:10.</p>
+              <p class="dest-from">from $148</p>
+            </div>
+          </div>
+          <div class="dest">
+            <div class="dest-sky sky-b"></div>
+            <div class="dest-body">
+              <div class="dest-iata">JFK &rarr; SEA</div>
+              <h3>Seattle</h3>
+              <p class="muted">Six hours across, and worth the window seat.</p>
+              <p class="dest-from">from $214</p>
+            </div>
+          </div>
+          <div class="dest">
+            <div class="dest-sky sky-c"></div>
+            <div class="dest-body">
+              <div class="dest-iata">JFK &rarr; AUS</div>
+              <h3>Austin</h3>
+              <p class="muted">New this season, twice daily.</p>
+              <p class="dest-from">from $179</p>
+            </div>
+          </div>
+        </div>
+        <div class="btn-row" style="margin-top:1.6rem">
+          <a class="btn btn-ghost" href="destinations.html">See all ten cities</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <div class="foot-mark">Kestrel Air</div>
+          <p>A fictional carrier built for MAC172 Web Development I at
+          LaGuardia Community College. Ten cities, one hub at JFK, and no
+          real aeroplanes whatsoever.</p>
+        </div>
+        <div>
+          <h4>Travel</h4>
+          <a href="index.html">Book a flight</a>
+          <a href="destinations.html">Where we fly</a>
+          <a href="manage.html">Manage a booking</a>
+          <a href="seats.html">Seat maps</a>
+        </div>
+        <div>
+          <h4>Kestrel Club</h4>
+          <a href="register.html">Join the programme</a>
+          <a href="login.html">Sign in</a>
+          <a href="destinations.html">Award destinations</a>
+        </div>
+        <div>
+          <h4>Help</h4>
+          <a href="contact.html">Contact us</a>
+          <a href="terms.html">Conditions of carriage</a>
+          <a href="terms.html#baggage">Baggage</a>
+        </div>
+      </div>
+      <div class="foot-base">
+        <span>&copy; 2026 Kestrel Air. Student coursework &mdash; not a real airline.</span>
+        <span class="code">HTML &middot; CSS &middot; JavaScript</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

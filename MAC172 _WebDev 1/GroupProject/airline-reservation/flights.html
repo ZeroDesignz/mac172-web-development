@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Compare Kestrel Air flights by fare, duration and departure time.">
+  <title>Choose your flight | Kestrel Air</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="site-head">
+    <div class="wrap head-bar">
+      <a class="wordmark" href="index.html">
+        <span class="wm-mark" aria-hidden="true"></span>
+        <span>Kestrel Air</span>
+      </a>
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="mainnav">Menu</button>
+      <nav class="mainnav" id="mainnav" aria-label="Main navigation">
+        <a href="index.html">Book</a>
+        <a href="flights.html" class="current">Flights</a>
+        <a href="destinations.html">Where we fly</a>
+        <a href="manage.html">My trips</a>
+        <a href="contact.html">Help</a>
+        <a href="login.html">Sign in</a>
+        <a class="btn btn-sm" href="register.html">Join Kestrel Club</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="page-head">
+      <div class="wrap">
+        <p class="eyebrow">Step 2 of 5</p>
+        <h1>Choose your flight</h1>
+        <p class="lede" id="route-line">Searching&hellip;</p>
+      </div>
+    </div>
+
+    <section class="tight">
+      <div class="wrap">
+    <div class="steps">
+      <div class="step done"><span class="step-n">1</span>Search</div>
+      <div class="step on"><span class="step-n">2</span>Choose a flight</div>
+      <div class="step"><span class="step-n">3</span>Seats</div>
+      <div class="step"><span class="step-n">4</span>Passengers</div>
+      <div class="step"><span class="step-n">5</span>Payment</div>
+    </div>
+
+        <div class="split">
+          <div>
+            <div class="chips">
+              <button class="chip on" data-stops="any">Any stops</button>
+              <button class="chip" data-stops="0">Nonstop only</button>
+              <button class="chip" data-stops="1">With a connection</button>
+            </div>
+            <div class="chips">
+              <button class="chip on" data-when="any">Any time</button>
+              <button class="chip" data-when="am">Morning</button>
+              <button class="chip" data-when="pm">Afternoon</button>
+              <button class="chip" data-when="eve">Evening</button>
+            </div>
+
+            <div class="btn-row" style="margin-bottom:1rem">
+              <span class="faint" id="count">&nbsp;</span>
+              <span style="margin-left:auto"></span>
+              <label for="sort" style="margin:0 .5rem 0 0">Sort by</label>
+              <select id="sort" style="width:auto">
+                <option value="price">Lowest fare</option>
+                <option value="duration">Shortest trip</option>
+                <option value="depart">Earliest departure</option>
+                <option value="arrive">Earliest arrival</option>
+              </select>
+            </div>
+
+            <div id="board"></div>
+          </div>
+
+          <aside class="aside">
+            <div class="card">
+              <h3>Every fare includes</h3>
+              <p class="muted" style="font-size:.92rem">A personal item and a
+              full-size carry-on, a main-cabin seat of your choosing, and a free
+              change to another Kestrel flight on the same route.</p>
+              <hr style="border:none;border-top:1px solid var(--line);margin:1rem 0">
+              <h4>Checked bags</h4>
+              <table>
+                <tr><td>First bag</td><td class="num">$35</td></tr>
+                <tr><td>Second bag</td><td class="num">$45</td></tr>
+                <tr><td>Kestrel Club</td><td class="num">Free</td></tr>
+              </table>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <div class="foot-mark">Kestrel Air</div>
+          <p>A fictional carrier built for MAC172 Web Development I at
+          LaGuardia Community College. Ten cities, one hub at JFK, and no
+          real aeroplanes whatsoever.</p>
+        </div>
+        <div>
+          <h4>Travel</h4>
+          <a href="index.html">Book a flight</a>
+          <a href="destinations.html">Where we fly</a>
+          <a href="manage.html">Manage a booking</a>
+          <a href="seats.html">Seat maps</a>
+        </div>
+        <div>
+          <h4>Kestrel Club</h4>
+          <a href="register.html">Join the programme</a>
+          <a href="login.html">Sign in</a>
+          <a href="destinations.html">Award destinations</a>
+        </div>
+        <div>
+          <h4>Help</h4>
+          <a href="contact.html">Contact us</a>
+          <a href="terms.html">Conditions of carriage</a>
+          <a href="terms.html#baggage">Baggage</a>
+        </div>
+      </div>
+      <div class="foot-base">
+        <span>&copy; 2026 Kestrel Air. Student coursework &mdash; not a real airline.</span>
+        <span class="code">HTML &middot; CSS &middot; JavaScript</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
